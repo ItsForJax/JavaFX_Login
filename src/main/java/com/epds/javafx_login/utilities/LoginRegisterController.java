@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-public class HelloController {
+public class LoginRegisterController {
 
     String DEFAULT_USERNAME = "admin";
     String DEFAULT_PASSWORD = "admin";
