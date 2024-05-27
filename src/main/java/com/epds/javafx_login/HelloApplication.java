@@ -1,5 +1,6 @@
 package com.epds.javafx_login;
 
+import com.epds.javafx_login.utilities.DatabaseHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

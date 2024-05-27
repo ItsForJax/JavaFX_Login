@@ -1,11 +1,8 @@
-package com.epds.javafx_login;
+package com.epds.javafx_login.utilities;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 
 public class HelloController {
 

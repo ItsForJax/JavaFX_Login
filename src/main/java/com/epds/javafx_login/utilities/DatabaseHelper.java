@@ -1,4 +1,4 @@
-package com.epds.javafx_login;
+package com.epds.javafx_login.utilities;
 
 import java.sql.*;
 
