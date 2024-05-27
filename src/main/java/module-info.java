@@ -6,4 +6,6 @@ module com.epds.javafx_login {
 
     opens com.epds.javafx_login to javafx.fxml;
     exports com.epds.javafx_login;
+    exports com.epds.javafx_login.utilities;
+    opens com.epds.javafx_login.utilities to javafx.fxml;
 }
