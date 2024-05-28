@@ -65,7 +65,6 @@ public class LoginRegisterController {
             alert.setContentText("Welcome!");
             sceneController.MainApplication(event,username);
 
-
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login Failed");
