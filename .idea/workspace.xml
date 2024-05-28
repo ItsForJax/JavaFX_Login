@@ -12,6 +12,11 @@
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/ched_logo.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/pca_logo.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/Page2Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/Page3Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/page2.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/page3.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" afterDir="false" />
@@ -87,7 +92,11 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\DelaSoledad\JavaFX_LoginUI\JavaFX_Login\src\main\java\com\epds\javafx_login\utilities\controllers" />
       <recent name="C:\DelaSoledad\JavaFX_LoginUI\JavaFX_Login\src\main\resources\com\epds\javafx_login\scenes" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.epds.javafx_login.utilities.controllers" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -139,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716796672600</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implement controller to controller data passage">
+      <option name="closed" value="true" />
+      <created>1716862806529</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716862806529</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -147,6 +164,7 @@
     <MESSAGE value="Renamed files" />
     <MESSAGE value="Misc" />
     <MESSAGE value="Added navigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added navigation" />
+    <MESSAGE value="Implement controller to controller data passage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement controller to controller data passage" />
   </component>
 </project>
