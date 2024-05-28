@@ -63,7 +63,6 @@ public class LoginRegisterController {
         root = loader.load();
         sceneController = loader.getController();
 
-
         Alert alert;
         if (DatabaseHelper.loginUser(username, password)) {
             alert = new Alert(Alert.AlertType.INFORMATION);
@@ -79,6 +78,7 @@ public class LoginRegisterController {
             alert.setContentText("Incorrect username or password.");
         }
         alert.showAndWait();
+        DatabaseHelper.close();
     }
 
     @FXML
@@ -115,5 +115,6 @@ public class LoginRegisterController {
         }
 
         alert.showAndWait();
+        DatabaseHelper.close();
     }
 }
