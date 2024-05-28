@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Adjusted the main scene size">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" afterDir="false" />
+    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Deleted users.db">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +191,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716875376578</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Changes on git ignore (users.db)">
+      <option name="closed" value="true" />
+      <created>1716876089002</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716876089002</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Deleted users.db">
+      <option name="closed" value="true" />
+      <created>1716876549751</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716876549751</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -207,6 +222,8 @@
     <MESSAGE value="Added and used method for closing the db instance" />
     <MESSAGE value="misc" />
     <MESSAGE value="Adjusted the main scene size" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted the main scene size" />
+    <MESSAGE value="Changes on git ignore (users.db)" />
+    <MESSAGE value="Deleted users.db" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted users.db" />
   </component>
 </project>
