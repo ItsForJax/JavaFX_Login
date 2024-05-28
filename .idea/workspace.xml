@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Added navigation">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/IIMS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/abstract.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/abstract2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/cfidp_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/ched_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/images/pca_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/SceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rizatitar&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rizatitar/JavaFX_Login.git&quot;,
+    &quot;accountId&quot;: &quot;1f8afd88-d1fd-4cf4-9ad9-eed596d3c22b&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -56,8 +73,9 @@
     &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/DelaSoledad/sqlite-jdbc-3.36.0.3.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/rizatitar/Downloads/JavaFX_Login/src/main/resources/com/epds/javafx_login/scenes&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -65,6 +83,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\DelaSoledad\JavaFX_LoginUI\JavaFX_Login\src\main\resources\com\epds\javafx_login\scenes" />
     </key>
