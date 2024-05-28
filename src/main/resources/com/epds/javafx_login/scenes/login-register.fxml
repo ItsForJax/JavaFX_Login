@@ -109,7 +109,7 @@
                 <ImageView fitHeight="386.0" fitWidth="387.0" layoutX="8.0" layoutY="39.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@images/abstract.png"/>
+                        <Image url="@../images/abstract.png"/>
                     </image>
                     <cursor>
                         <Cursor fx:constant="DEFAULT"/>
@@ -118,19 +118,19 @@
                 <ImageView fitHeight="55.0" fitWidth="54.0" layoutX="96.0" layoutY="242.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@images/ched_logo.png"/>
+                        <Image url="@../images/ched_logo.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="165.0" layoutY="241.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@images/cfidp_logo.png"/>
+                        <Image url="@../images/cfidp_logo.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="238.0" layoutY="241.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@images/pca_logo.png"/>
+                        <Image url="@../images/pca_logo.png"/>
                     </image>
                 </ImageView>
                 <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="94.0" layoutY="461.0"
@@ -143,7 +143,7 @@
                 <ImageView fitHeight="156.0" fitWidth="162.0" layoutX="123.0" layoutY="103.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@images/IIMS.png"/>
+                        <Image url="@../images/IIMS.png"/>
                     </image>
                 </ImageView>
             </children>
@@ -222,7 +222,7 @@
                 <ImageView fitHeight="336.0" fitWidth="378.0" layoutX="11.0" layoutY="68.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@images/abstract2.png"/>
+                        <Image url="@../images/abstract2.png"/>
                     </image>
                 </ImageView>
                 <Label alignment="CENTER" layoutX="123.0" layoutY="157.0" prefHeight="30.0" prefWidth="176.0"
@@ -245,7 +245,7 @@
                 <ImageView fitHeight="62.0" fitWidth="68.0" layoutX="180.0" layoutY="95.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@images/IIMS.png"/>
+                        <Image url="@../images/IIMS.png"/>
                     </image>
                 </ImageView>
             </children>
