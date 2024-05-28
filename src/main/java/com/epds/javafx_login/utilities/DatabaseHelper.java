@@ -25,6 +25,17 @@ public class DatabaseHelper {
         return conn;
     }
 
+    public static void close() {
+        try {
+            if (conn != null && !conn.isClosed()) {
+                conn.close();
+                System.out.println("Database connection closed.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error closing database connection: " + e.getMessage());
+        }
+    }
+
     public static void createUsersTable() {
         String sql = "CREATE TABLE IF NOT EXISTS users ("
                 + " id INTEGER PRIMARY KEY AUTOINCREMENT,"

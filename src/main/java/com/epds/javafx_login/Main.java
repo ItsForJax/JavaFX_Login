@@ -20,6 +20,7 @@ public class Main extends Application {
 //        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         DatabaseHelper.createUsersTable();
+        DatabaseHelper.close();
         stage.show();
     }
 
