@@ -3,11 +3,14 @@ package com.epds.javafx_login.utilities.controllers;
 import com.epds.javafx_login.utilities.DatabaseHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.security.PrivateKey;
 
 public class LoginRegisterController {
 
@@ -31,6 +34,7 @@ public class LoginRegisterController {
     private GridPane grid_pane_login;
 
     SceneController sceneController;
+    private Parent root;
 
     @FXML
     protected void gotoRegister() {
@@ -48,7 +52,10 @@ public class LoginRegisterController {
     protected void login(ActionEvent event) throws IOException {
         String username = login_username.getText();
         String password = login_password.getText();
-        sceneController = new SceneController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
+        root = loader.load();
+        sceneController = loader.getController();
+
 
         Alert alert;
         if (DatabaseHelper.loginUser(username, password)) {
@@ -56,8 +63,8 @@ public class LoginRegisterController {
             alert.setTitle("Login Successful");
             alert.setHeaderText(null);
             alert.setContentText("Welcome!");
+            sceneController.MainApplication(event,username);
 
-            sceneController.MainApplication(event);
 
         } else {
             alert = new Alert(Alert.AlertType.ERROR);

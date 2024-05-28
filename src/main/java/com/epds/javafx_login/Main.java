@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -15,6 +16,8 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         stage.setTitle("Hello!");
         stage.setResizable(false);
+//  Removes the default header design
+//        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         DatabaseHelper.createUsersTable();
         stage.show();

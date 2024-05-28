@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Misc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/SceneController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" afterDir="false" />
+    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Added navigation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/LoginRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/SceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,23 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.CodyAccountHistoryMigration": "true",
-    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
-    "RunOnceActivity.CodyHistoryLlmMigration": "true",
-    "RunOnceActivity.CodyProjectSettingsMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/DelaSoledad/sqlite-jdbc-3.36.0.3.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/DelaSoledad/sqlite-jdbc-3.36.0.3.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\DelaSoledad\JavaFX_LoginUI\JavaFX_Login\src\main\resources\com\epds\javafx_login\scenes" />
@@ -112,13 +110,22 @@
       <option name="project" value="LOCAL" />
       <updated>1716793442098</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added navigation">
+      <option name="closed" value="true" />
+      <created>1716796672600</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716796672600</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Structure update, grouped files." />
     <MESSAGE value="Renamed files" />
     <MESSAGE value="Misc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Misc" />
+    <MESSAGE value="Added navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added navigation" />
   </component>
 </project>
