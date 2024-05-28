@@ -1,0 +1,79 @@
+#grid_pane_login {
+    -fx-background-color: #F2F2F2;
+}
+
+#login_btn {
+    -fx-background-color: #44977d;
+    -fx-text-fill: white;
+}
+
+#login_vbox {
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+}
+
+#go_to_register_btn {
+    -fx-background-color: null;
+    -fx-text-fill: #4B7F52;
+}
+
+#login_logo_pane {
+    -fx-background-color: #44977d;
+}
+
+#grid_pane_register {
+    -fx-background-color: #F2F2F2;
+}
+
+#register_vbox {
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+}
+
+#register_btn {
+    -fx-background-color: #44977d;
+}
+
+#go_to_login_btn {
+   -fx-background-color: null;
+}
+
+#register_logo_pane {
+    -fx-background-color: #44977d;
+}
+
+.check-box .box {
+	-fx-background-color: white;
+	-fx-border-color: #44977d;
+	-fx-border-radius: 3;
+	-fx-border-width: 1.5;
+
+}
+.check-box .mark {
+ 	-fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
+}
+.check-box:selected .mark {
+	-fx-background-color: white;
+}
+.check-box:selected .box {
+	-fx-background-color: #44977d;
+}
+
+.text-field {
+	-fx-accent: #44977d;
+	-fx-background-color: #cccccc, white;
+	-fx-background-radius: 3;
+}
+
+.text-field:focused {
+	-fx-background-color: #44977d, white;
+}
+
+
+
+
+

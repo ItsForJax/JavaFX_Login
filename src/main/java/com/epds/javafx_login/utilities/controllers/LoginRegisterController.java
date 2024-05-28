@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.security.PrivateKey;
@@ -32,6 +33,8 @@ public class LoginRegisterController {
     private GridPane grid_pane_register;
     @FXML
     private GridPane grid_pane_login;
+    @FXML
+    private Pane login_logo_pane, register_logo_pane;
 
     SceneController sceneController;
     private Parent root;
@@ -39,12 +42,16 @@ public class LoginRegisterController {
     @FXML
     protected void gotoRegister() {
         grid_pane_login.setVisible(false);
+        login_logo_pane.setVisible(false);
         grid_pane_register.setVisible(true);
+        register_logo_pane.setVisible(true);
     }
 
     @FXML
     protected void gotoLogin() {
         grid_pane_register.setVisible(false);
+        register_logo_pane.setVisible(false);
+        login_logo_pane.setVisible(true);
         grid_pane_login.setVisible(true);
     }
 
