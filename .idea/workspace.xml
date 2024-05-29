@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Updated dependencies&#10;Rename SceneController.java to MainController.java&#10;Creation of Chat using ListView in progress">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/UserDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/user-details.fxml" afterDir="false" />
+    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="misc">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_05_2024_1_15_pm_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_05_2024_1_15_pm__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_1_07_pm_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_1_07_pm__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_1_09_pm_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_1_09_pm__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_1_11_pm_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_1_11_pm__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_9_28_am_[Changes]/eye.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_9_28_am_[Changes]/eye_hide.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_9_28_am_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_9_28_am__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +286,55 @@
       <option name="project" value="LOCAL" />
       <updated>1716953198950</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added method for single user per device check (db based not hardware serial number)&#10;added method of user update if the user is newly registered">
+      <option name="closed" value="true" />
+      <created>1716965694968</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716965694968</updated>
+    </task>
+    <task id="LOCAL-00019" summary="handled first time login to redirect user to user-detail screen">
+      <option name="closed" value="true" />
+      <created>1716965783754</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716965783754</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added UserInfo method for the user-details scene (user update form)">
+      <option name="closed" value="true" />
+      <created>1716965921072</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716965921072</updated>
+    </task>
+    <task id="LOCAL-00021" summary="working user form (no design)">
+      <option name="closed" value="true" />
+      <created>1716965947452</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1716965947452</updated>
+    </task>
+    <task id="LOCAL-00022" summary="controller for the user-detail.fxml">
+      <option name="closed" value="true" />
+      <created>1716965970568</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716965970568</updated>
+    </task>
+    <task id="LOCAL-00023" summary="misc">
+      <option name="closed" value="true" />
+      <created>1716965980007</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1716965980007</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -315,13 +370,19 @@
     <MESSAGE value="Added home controller" />
     <MESSAGE value="Added working logout button" />
     <MESSAGE value="Added and used method for closing the db instance" />
-    <MESSAGE value="misc" />
     <MESSAGE value="Adjusted the main scene size" />
     <MESSAGE value="Changes on git ignore (users.db)" />
     <MESSAGE value="Deleted users.db" />
     <MESSAGE value="Updated version to 21" />
     <MESSAGE value="Updated version from 22 to 21" />
     <MESSAGE value="Updated dependencies&#10;Rename SceneController.java to MainController.java&#10;Creation of Chat using ListView in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies&#10;Rename SceneController.java to MainController.java&#10;Creation of Chat using ListView in progress" />
+    <MESSAGE value="added method for single user per device check (db based not hardware serial number)&#10;added method of user update if the user is newly registered" />
+    <MESSAGE value="handled first time login to redirect to user-detail screen" />
+    <MESSAGE value="handled first time login to redirect user to user-detail screen" />
+    <MESSAGE value="added UserInfo method for the user-details scene (user update form)" />
+    <MESSAGE value="working user form (no design)" />
+    <MESSAGE value="controller for the user-detail.fxml" />
+    <MESSAGE value="misc" />
+    <option name="LAST_COMMIT_MESSAGE" value="misc" />
   </component>
 </project>
