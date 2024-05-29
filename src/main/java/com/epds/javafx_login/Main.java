@@ -16,11 +16,15 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         stage.setTitle("Hello!");
         stage.setResizable(false);
-//  Removes the default header design
-//        stage.initStyle(StageStyle.UNDECORATED);
+
+        //  Removes the default header design
+        //stage.initStyle(StageStyle.UNDECORATED);
+
         stage.setScene(scene);
+
         DatabaseHelper.createUsersTable();
         DatabaseHelper.close();
+
         stage.show();
     }
 
