@@ -8,7 +8,7 @@
 }
 
 #login_vbox {
-    -fx-border-color: #cccccc;
+    /* -fx-border-color: #cccccc; */
     -fx-border-radius: 15;
     -fx-background-color: white;
     -fx-background-radius: 15;
@@ -28,7 +28,7 @@
 }
 
 #register_vbox {
-    -fx-border-color: #cccccc;
+    /* -fx-border-color: #cccccc; */
     -fx-border-radius: 15;
     -fx-background-color: white;
     -fx-background-radius: 15;
@@ -36,6 +36,12 @@
 
 #register_btn {
     -fx-background-color: #44977d;
+}
+
+#border{
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3;
+    -fx-border-width: 1.25;
 }
 
 #go_to_login_btn {

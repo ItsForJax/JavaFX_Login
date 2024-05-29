@@ -19,7 +19,7 @@
           <RowConstraints maxHeight="500.0" minHeight="400.0" percentHeight="100.0" prefHeight="400.0" valignment="CENTER" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <AnchorPane maxWidth="199.0" minWidth="199.0" prefHeight="495.0" prefWidth="199.0">
+            <AnchorPane maxWidth="199.0" minWidth="199.0" prefHeight="495.0" prefWidth="199.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                <children>
                   <Text fx:id="username" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="73.66665649414062" />
                   <Button fx:id="home_btn" layoutX="13.0" layoutY="200.0" mnemonicParsing="false" onAction="#navigationInit" prefHeight="25.0" prefWidth="127.0" text="Home" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="8.333333333333343" />
@@ -30,6 +30,7 @@
                   <Button fx:id="logout_btn" layoutX="96.0" layoutY="9.0" mnemonicParsing="false" onAction="#LoginRegister" text="Logout" />
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="main_container" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
