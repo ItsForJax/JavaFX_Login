@@ -119,7 +119,7 @@ public class MainController {
     }
 
     @FXML
-    protected void navigateToChat(ActionEvent event) throws IOException {
+    protected void navigateToChat() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/chat.fxml")));
         grid.add(root, 1, 0);
     }
