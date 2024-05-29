@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Deleted users.db">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/images/eye.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/images/eye_hide.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Updated dependencies&#10;Rename SceneController.java to MainController.java&#10;Creation of Chat using ListView in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,18 +29,48 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;rizatitar&quot;
+    &quot;state&quot;: &quot;OPEN&quot;
   }
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOMBDKNM5w0qtX&quot;,
+        &quot;number&quot;: 3
+      },
+      &quot;lastSeen&quot;: 1716945984712
+    }
+  ]
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/rizatitar/JavaFX_Login.git&quot;,
-    &quot;accountId&quot;: &quot;1f8afd88-d1fd-4cf4-9ad9-eed596d3c22b&quot;
+    &quot;url&quot;: &quot;https://github.com/ItsForJax/JavaFX_Login.git&quot;,
+    &quot;accountId&quot;: &quot;2fa6a005-ac43-4aba-bfef-f5b90f9ea02b&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;jonathandavid723&quot;,
+    &quot;repository&quot;: &quot;JavaFX_Login&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -50,6 +79,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -70,6 +102,7 @@
     "RunOnceActivity.CodyHistoryLlmMigration": "true",
     "RunOnceActivity.CodyProjectSettingsMigration": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/rizatitar/Downloads/JavaFX_Login/src/main/resources/com/epds/javafx_login/scenes",
@@ -91,6 +124,15 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.epds.javafx_login.utilities.controllers" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.epds.javafx_login.Main" />
+      <module name="JavaFX_Login" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -221,8 +263,47 @@
       <option name="project" value="LOCAL" />
       <updated>1716944183772</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Updated version from 22 to 21">
+      <option name="closed" value="true" />
+      <created>1716944321819</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716944321819</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Updated dependencies&#10;Rename SceneController.java to MainController.java&#10;Creation of Chat using ListView in progress">
+      <option name="closed" value="true" />
+      <created>1716953198950</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716953198950</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="upstream/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Structure update, grouped files." />
@@ -239,6 +320,8 @@
     <MESSAGE value="Changes on git ignore (users.db)" />
     <MESSAGE value="Deleted users.db" />
     <MESSAGE value="Updated version to 21" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated version to 21" />
+    <MESSAGE value="Updated version from 22 to 21" />
+    <MESSAGE value="Updated dependencies&#10;Rename SceneController.java to MainController.java&#10;Creation of Chat using ListView in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies&#10;Rename SceneController.java to MainController.java&#10;Creation of Chat using ListView in progress" />
   </component>
 </project>
