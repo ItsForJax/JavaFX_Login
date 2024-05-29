@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SceneController {
+public class MainController {
 
     public GridPane grid;
     public Button home_btn;
@@ -38,7 +38,7 @@ public class SceneController {
             root = loader.load();
 
             // Retrieve the controller from the loader and set the user
-            SceneController controller = loader.getController();
+            MainController controller = loader.getController();
             controller.setUser(user);
 
             controller.navigationInit(event);
