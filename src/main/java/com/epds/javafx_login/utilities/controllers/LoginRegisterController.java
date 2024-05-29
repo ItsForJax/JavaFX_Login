@@ -2,8 +2,6 @@ package com.epds.javafx_login.utilities.controllers;
 
 import com.epds.javafx_login.Main;
 import com.epds.javafx_login.utilities.DatabaseHelper;
-import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,7 +52,7 @@ public class LoginRegisterController {
     private boolean isRegisterPasswordVisible = false;
     private boolean isRegisterConfirmPasswordVisible = false;
 
-    SceneController sceneController;
+    MainController mainController;
     private Parent root;
 
     @FXML
@@ -132,7 +130,7 @@ public class LoginRegisterController {
         String password = isLoginPasswordVisible ? login_password_visible.getText() : login_password.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
         root = loader.load();
-        sceneController = loader.getController();
+        mainController = loader.getController();
 
         Alert alert;
         if (DatabaseHelper.loginUser(username, password)) {
@@ -140,7 +138,7 @@ public class LoginRegisterController {
             alert.setTitle("Login Successful");
             alert.setHeaderText(null);
             alert.setContentText("Welcome!");
-            sceneController.MainApplication(event, username);
+            mainController.MainApplication(event, username);
 
         } else {
             alert = new Alert(Alert.AlertType.ERROR);

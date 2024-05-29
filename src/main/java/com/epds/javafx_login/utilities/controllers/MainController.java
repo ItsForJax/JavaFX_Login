@@ -16,11 +16,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SceneController {
+public class MainController {
 
     public GridPane grid;
     public Button home_btn;
-    public Button page_2;
+    public Button chat_button;
     public Button page_3;
     public AnchorPane main_container;
     private Stage stage;
@@ -40,7 +40,7 @@ public class SceneController {
             root = loader.load();
 
             // Retrieve the controller from the loader and set the user
-            SceneController controller = loader.getController();
+            MainController controller = loader.getController();
             controller.setUser(user);
 
             controller.navigationInit(event);
@@ -99,5 +99,11 @@ public class SceneController {
     public void navigateToPage3(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/page3.fxml")));
         grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
+    }
+
+    @FXML
+    protected void navigateToChat(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/chat.fxml")));
+        grid.add(root, 1, 0);
     }
 }
