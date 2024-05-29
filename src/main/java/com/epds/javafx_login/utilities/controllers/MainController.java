@@ -18,6 +18,7 @@ import java.util.Objects;
 
 public class MainController {
 
+
     public GridPane grid;
     public Button home_btn;
     public Button chat_button;
@@ -30,6 +31,7 @@ public class MainController {
     @FXML
     private Text username;
 
+    private static final String USERINFO_FXML_PATH = "/com/epds/javafx_login/scenes/user-details.fxml";
     private static final String MAIN_FXML_PATH = "/com/epds/javafx_login/scenes/main.fxml";
     private static final String LOGIN_REGISTER_FXML_PATH = "/com/epds/javafx_login/scenes/login-register.fxml";
 
@@ -52,6 +54,26 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
             showErrorAlert("Error", "An error occurred while loading the main application scene.");
+        }
+    }
+
+    @FXML
+    public void UserInfo(ActionEvent event, String user, String password) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(USERINFO_FXML_PATH));
+            root = loader.load();
+
+            // Retrieve the controller from the loader and set the user
+            UserDetailsController controller = loader.getController();
+            controller.setUserPass(user, password);
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorAlert("Error", "An error occurred while loading the user info application scene.");
         }
     }
 
@@ -88,11 +110,6 @@ public class MainController {
 
     public void navigationInit(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/home.fxml")));
-        grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
-    }
-
-    public void navigateToPage2(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/page2.fxml")));
         grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
     }
 
