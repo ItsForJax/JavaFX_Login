@@ -52,11 +52,16 @@ public class LoginRegisterController {
     private boolean isRegisterPasswordVisible = false;
     private boolean isRegisterConfirmPasswordVisible = false;
 
-    MainController mainController;
+    public MainController mainController;
     private Parent root;
 
     @FXML
-    protected void initialize() {
+    protected void initialize() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
+        root = loader.load();
+        mainController = loader.getController();
+
         loginPasswordToggle.setOnMouseClicked(event -> {
             isLoginPasswordVisible = togglePasswordVisibility(login_password, login_password_visible, loginPasswordToggle, isLoginPasswordVisible);
         });
@@ -128,17 +133,19 @@ public class LoginRegisterController {
     protected void login(ActionEvent event) throws IOException {
         String username = login_username.getText();
         String password = isLoginPasswordVisible ? login_password_visible.getText() : login_password.getText();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
-        root = loader.load();
-        mainController = loader.getController();
 
         Alert alert;
         if (DatabaseHelper.loginUser(username, password)) {
+            if (!DatabaseHelper.isNewUser(username)){
+                mainController.MainApplication(event, username);
+            } else {
+                mainController.UserInfo(event, username, password);
+            }
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Login Successful");
             alert.setHeaderText(null);
             alert.setContentText("Welcome!");
-            mainController.MainApplication(event, username);
+
 
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
