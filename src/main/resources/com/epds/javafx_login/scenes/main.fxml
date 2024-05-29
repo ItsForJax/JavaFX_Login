@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.SceneController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.MainController">
    <children>
       <GridPane fx:id="grid" prefHeight="500.0" prefWidth="800.0">
         <columnConstraints>
@@ -23,7 +19,7 @@
                <children>
                   <Text fx:id="username" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="73.66665649414062" />
                   <Button fx:id="home_btn" layoutX="13.0" layoutY="200.0" mnemonicParsing="false" onAction="#navigationInit" prefHeight="25.0" prefWidth="127.0" text="Home" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="8.333333333333343" />
-                  <Button fx:id="page_2" layoutX="13.0" layoutY="260.0" mnemonicParsing="false" onAction="#navigateToPage2" text="Page 2" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="9.666666666666686" />
+                  <Button fx:id="chat_button" layoutX="13.0" layoutY="260.0" mnemonicParsing="false" onAction="#navigateToChat" text="Chat" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="9.666666666666686" />
                   <Button fx:id="page_3" layoutX="13.0" layoutY="320.0" mnemonicParsing="false" onAction="#navigateToPage3" text="Page 3" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="9.666666666666686" />
                   <Pane layoutX="26.0" layoutY="225.0" prefHeight="35.0" prefWidth="122.0" />
                   <Pane layoutX="23.0" layoutY="285.0" prefHeight="35.0" prefWidth="122.0" />
