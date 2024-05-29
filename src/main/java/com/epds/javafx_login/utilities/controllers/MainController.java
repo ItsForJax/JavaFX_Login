@@ -20,7 +20,7 @@ public class MainController {
 
     public GridPane grid;
     public Button home_btn;
-    public Button page_2;
+    public Button chat_button;
     public Button page_3;
     public AnchorPane main_container;
     private Stage stage;
@@ -99,5 +99,11 @@ public class MainController {
     public void navigateToPage3(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/page3.fxml")));
         grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
+    }
+
+    @FXML
+    protected void navigateToChat(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/chat.fxml")));
+        grid.add(root, 1, 0);
     }
 }
