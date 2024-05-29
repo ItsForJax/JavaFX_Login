@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -21,6 +22,7 @@ public class MainController {
     public Button home_btn;
     public Button page_2;
     public Button page_3;
+    public AnchorPane main_container;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -86,16 +88,16 @@ public class MainController {
 
     public void navigationInit(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/home.fxml")));
-        grid.add(root, 2, 0); // Assuming 'grid' is your GridPane instance
+        grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
     }
 
     public void navigateToPage2(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/page2.fxml")));
-        grid.add(root, 2, 0); // Assuming 'grid' is your GridPane instance
+        grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
     }
 
     public void navigateToPage3(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/page3.fxml")));
-        grid.add(root, 2, 0); // Assuming 'grid' is your GridPane instance
+        grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
     }
 }
