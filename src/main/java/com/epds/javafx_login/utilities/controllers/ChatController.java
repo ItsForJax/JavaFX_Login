@@ -29,7 +29,6 @@ public class ChatController {
 
 
     private void openChatMessage(int userId) {
-
     }
 
 }
