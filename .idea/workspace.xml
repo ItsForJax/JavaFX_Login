@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="misc">
+    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Deleted users.db">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,24 +57,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rizatitar/Downloads/JavaFX_Login/src/main/resources/com/epds/javafx_login/scenes&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.CodyAccountHistoryMigration": "true",
+    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
+    "RunOnceActivity.CodyHistoryLlmMigration": "true",
+    "RunOnceActivity.CodyProjectSettingsMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/rizatitar/Downloads/JavaFX_Login/src/main/resources/com/epds/javafx_login/scenes",
+    "project.structure.last.edited": "Facets",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes" />
@@ -208,13 +209,13 @@
       <option name="project" value="LOCAL" />
       <updated>1716876549751</updated>
     </task>
-    <task id="LOCAL-00015" summary="misc">
+    <task id="LOCAL-00015" summary="Updated version to 21">
       <option name="closed" value="true" />
-      <created>1716882758405</created>
+      <created>1716944183772</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1716882758405</updated>
+      <updated>1716944183772</updated>
     </task>
     <option name="localTasksCounter" value="16" />
     <servers />
@@ -229,10 +230,11 @@
     <MESSAGE value="Added home controller" />
     <MESSAGE value="Added working logout button" />
     <MESSAGE value="Added and used method for closing the db instance" />
+    <MESSAGE value="misc" />
     <MESSAGE value="Adjusted the main scene size" />
     <MESSAGE value="Changes on git ignore (users.db)" />
     <MESSAGE value="Deleted users.db" />
-    <MESSAGE value="misc" />
-    <option name="LAST_COMMIT_MESSAGE" value="misc" />
+    <MESSAGE value="Updated version to 21" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated version to 21" />
   </component>
 </project>
