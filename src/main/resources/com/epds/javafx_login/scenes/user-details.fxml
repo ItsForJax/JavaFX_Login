@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.epds.javafx_login.utilities.controllers.UserDetailsController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <Label text="Username" layoutX="50.0" layoutY="50.0"/>
+    <TextField fx:id="usernameField" layoutX="150.0" layoutY="50.0" editable="false"/>
+
+    <Label text="Password" layoutX="50.0" layoutY="100.0"/>
+    <HBox id="border" layoutX="150.0" layoutY="100.0" alignment="CENTER" prefHeight="32.0" prefWidth="200.0" spacing="2.0" styleClass="text-field" stylesheets="@stylesheet.css">
+        <children>
+            <PasswordField fx:id="login_password" editable="false" prefHeight="32.0" prefWidth="254.0" style="-fx-background-color: transparent;" />
+            <TextField fx:id="login_password_visible" editable="false" prefHeight="32.0" prefWidth="0.0" style="-fx-background-color: transparent;" />
+            <ImageView fx:id="loginPasswordToggle">
+                <image>
+                    <Image url="@../images/eye.png" />
+                </image>
+            </ImageView>
+        </children>
+        <padding>
+            <Insets right="2.0" />
+        </padding>
+    </HBox>
+
+    <Label text="Mobile Number" layoutX="50.0" layoutY="150.0"/>
+    <TextField fx:id="mobileNumberField" layoutX="150.0" layoutY="150.0"/>
+
+    <Label text="Email" layoutX="50.0" layoutY="200.0"/>
+    <TextField fx:id="emailField" layoutX="150.0" layoutY="200.0"/>
+
+    <Label text="First Name" layoutX="50.0" layoutY="250.0"/>
+    <TextField fx:id="firstNameField" layoutX="150.0" layoutY="250.0"/>
+
+    <Label text="Last Name" layoutX="50.0" layoutY="300.0"/>
+    <TextField fx:id="lastNameField" layoutX="150.0" layoutY="300.0"/>
+
+    <Label text="Middle Name" layoutX="350.0" layoutY="50.0"/>
+    <TextField fx:id="middleNameField" layoutX="450.0" layoutY="50.0"/>
+
+    <Label text="Name Extension" layoutX="350.0" layoutY="100.0"/>
+    <TextField fx:id="nameExtensionField" layoutX="450.0" layoutY="100.0"/>
+
+    <Label text="Birthday" layoutX="350.0" layoutY="150.0"/>
+    <DatePicker fx:id="birthdayPicker" layoutX="450.0" layoutY="150.0" editable="false"/>
+
+    <Label text="Sex" layoutX="350.0" layoutY="200.0"/>
+    <ChoiceBox fx:id="sexChoiceBox" layoutX="450.0" layoutY="200.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Male"/>
+                <String fx:value="Female"/>
+            </FXCollections>
+        </items>
+    </ChoiceBox>
+
+    <Button fx:id="user_detail_submit" text="Submit" layoutX="250.0" layoutY="350.0"/>
+</AnchorPane>
+
