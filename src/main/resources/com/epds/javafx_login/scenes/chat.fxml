@@ -15,7 +15,7 @@
         </rowConstraints>
          <children>
             <ListView fx:id="user_list_view" prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <AnchorPane fx:id="chat_message_pane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <ListView fx:id="chat_list_view" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
                   <Button fx:id="send_chat_button" mnemonicParsing="false" onAction="#addChatMessage" text="Send" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0" />
