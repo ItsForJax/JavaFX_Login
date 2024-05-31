@@ -66,7 +66,6 @@ public class LoginRegisterController {
         register_btn.setOnAction(event -> register());
         go_to_login_btn.setOnAction(event -> gotoLogin());
 
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
         root = loader.load();
         mainController = loader.getController();

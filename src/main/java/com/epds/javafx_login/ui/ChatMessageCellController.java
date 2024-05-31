@@ -7,13 +7,5 @@ import javafx.scene.control.Label;
 public class ChatMessageCellController {
 
     @FXML
-    private Label chat_message_text;
-
-    public String getChatMessageText() {
-        return chat_message_text.getText();
-    }
-
-    public void setChatMessageText(ChatMessage chatMessage) {
-        this.chat_message_text.setText(chatMessage.getMessage());
-    }
+    public Label chat_message_text;
 }
