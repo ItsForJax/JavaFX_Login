@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -47,6 +48,9 @@ public class LoginRegisterController {
     private GridPane grid_pane_login;
     @FXML
     private Pane login_logo_pane, register_logo_pane;
+    @FXML
+    private Button login_btn, go_to_register_btn,
+                    register_btn, go_to_login_btn;
 
     private boolean isLoginPasswordVisible = false;
     private boolean isRegisterPasswordVisible = false;
@@ -57,6 +61,11 @@ public class LoginRegisterController {
 
     @FXML
     protected void initialize() throws IOException {
+        login_btn.setOnAction(event -> login(event));
+        go_to_register_btn.setOnAction(event -> gotoRegister());
+        register_btn.setOnAction(event -> register());
+        go_to_login_btn.setOnAction(event -> gotoLogin());
+
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
         root = loader.load();
@@ -130,7 +139,7 @@ public class LoginRegisterController {
     }
 
     @FXML
-    protected void login(ActionEvent event) throws IOException {
+    protected void login(ActionEvent event) {
         String username = login_username.getText();
         String password = isLoginPasswordVisible ? login_password_visible.getText() : login_password.getText();
 
