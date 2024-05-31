@@ -13,7 +13,7 @@
             <ImageView fx:id="chat_user_image" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="chat_user_name" text="User Name" wrapText="true">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
          </children>
