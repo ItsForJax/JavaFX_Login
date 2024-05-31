@@ -44,7 +44,7 @@ public class ChatController {
     int currentId = -1;
 
     // Temporary list of users for testing, TODO: add database of users and chat messages
-    private final ObservableList<User> users = FXCollections.observableArrayList();
+    private ObservableList<User> users = FXCollections.observableArrayList();
     private final HashMap<Integer, ObservableList<ChatMessage>> messages = new HashMap<>();
 
     @FXML
@@ -60,13 +60,26 @@ public class ChatController {
     }
 
     private void fillWithDummyData() {
-        users.add(new User(0, "Me, myself, and I"));
+        users = FXCollections.observableArrayList(
+                new User(0, "Me, myself, and I"),
+                new User(1, "Somebody else"),
+                new User(2, "The 3rd Impact")
+        );
 
         ObservableList<ChatMessage> msgs = FXCollections.observableArrayList(
                 new ChatMessage("Beginning of Chat")
         );
-
         messages.put(0, msgs);
+
+        ObservableList<ChatMessage> msgs1 = FXCollections.observableArrayList(
+                new ChatMessage("Hey, it's me")
+        );
+        messages.put(1, msgs1);
+
+        ObservableList<ChatMessage> msgs2 = FXCollections.observableArrayList(
+                new ChatMessage("Who this????")
+        );
+        messages.put(2, msgs2);
     }
 
     @FXML
