@@ -84,6 +84,7 @@ public class LoginRegisterController {
     // Toggle pass
     private boolean togglePasswordVisibility(PasswordField passwordField, TextField textField, ImageView toggleIcon, boolean isVisible) {
         if (isVisible) {
+            int lastCaretPosition = textField.getCaretPosition();
             textField.setManaged(false);
             textField.setVisible(false);
             textField.setEditable(false);
@@ -92,30 +93,26 @@ public class LoginRegisterController {
             passwordField.setManaged(true);
             passwordField.setVisible(true);
             passwordField.setEditable(true);
-            passwordField.setFocusTraversable(true);
             passwordField.setText(textField.getText());
             passwordField.requestFocus();
-
-            passwordField.selectPositionCaret(passwordField.getText().length());
+            passwordField.positionCaret(lastCaretPosition);
 
             passwordField.deselect();
             toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/eye.png")).toString()));
         } else {
+            int lastCaretPosition = passwordField.getCaretPosition();
             passwordField.setManaged(false);
             passwordField.setVisible(false);
-            passwordField.setPrefWidth(0);
             passwordField.setEditable(false);
+            passwordField.setPrefWidth(0);
             textField.setPrefWidth(254);
             textField.setManaged(true);
             textField.setVisible(true);
             textField.setEditable(true);
-            textField.setFocusTraversable(true);
             textField.setText(passwordField.getText());
             textField.requestFocus();
+            textField.positionCaret(lastCaretPosition);
 
-            textField.selectPositionCaret(passwordField.getText().length());
-
-            textField.deselect();
             toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/eye_hide.png")).toString()));
         }
         return !isVisible;
