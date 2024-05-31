@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="50.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.ui.ChatMessageCellController">
+<AnchorPane fx:id="chat_message_pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.ui.ChatMessageCellController">
    <children>
-      <Label fx:id="chat_message_text" layoutX="237.0" layoutY="42.0" text="Chat Message" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
+      <HBox fillHeight="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="chat_message_text" alignment="TOP_LEFT" style="-fx-background-color: aqua; -fx-background-radius: 5;" text="Chat Message" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>
