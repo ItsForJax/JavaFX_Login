@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: aqua;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.ChatController">
    <children>
@@ -16,7 +17,7 @@
         </rowConstraints>
          <children>
             <ListView fx:id="user_list_view" prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane fx:id="chat_message_pane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <AnchorPane fx:id="chat_message_pane" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1">
                <children>
                   <ListView fx:id="chat_list_view" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Button fx:id="send_chat_button" mnemonicParsing="false" text="Send" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -25,6 +26,14 @@
                <padding>
                   <Insets left="8.0" />
                </padding>
+            </AnchorPane>
+            <AnchorPane fx:id="placeholder_pane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="empty_chat_placeholder" alignment="CENTER" text="Please select a User to chat with" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font></Label>
+               </children>
             </AnchorPane>
          </children>
       </GridPane>
