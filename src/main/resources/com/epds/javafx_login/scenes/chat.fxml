@@ -31,7 +31,7 @@
                <children>
                   <Label fx:id="empty_chat_placeholder" alignment="CENTER" text="Please select a User to chat with" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold Italic" size="24.0" />
+                        <Font name="Trebuchet MS Bold Italic" size="24.0" />
                      </font></Label>
                </children>
             </AnchorPane>
