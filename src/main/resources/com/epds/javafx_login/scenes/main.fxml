@@ -20,7 +20,7 @@
                   <Text fx:id="username" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="73.66665649414062" />
                   <Button fx:id="home_btn" layoutX="13.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Home" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="8.333333333333343" />
                   <Button fx:id="chat_btn" layoutX="13.0" layoutY="260.0" mnemonicParsing="false" text="Chat" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="9.666666666666686" />
-                  <Button fx:id="page_3" layoutX="13.0" layoutY="320.0" mnemonicParsing="false" onAction="#navigateToPage3" text="Page 3" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="9.666666666666686" />
+                  <Button fx:id="page_3" layoutX="13.0" layoutY="320.0" mnemonicParsing="false" text="Page 3" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="9.666666666666686" />
                   <Pane layoutX="26.0" layoutY="225.0" prefHeight="35.0" prefWidth="122.0" />
                   <Pane layoutX="23.0" layoutY="285.0" prefHeight="35.0" prefWidth="122.0" />
                   <Button fx:id="logout_btn" layoutX="96.0" layoutY="9.0" mnemonicParsing="false" text="Logout" />
