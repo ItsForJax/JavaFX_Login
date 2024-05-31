@@ -20,11 +20,10 @@ public class Main extends Application {
         //  Removes the default header design
         //stage.initStyle(StageStyle.UNDECORATED);
 
-        stage.setScene(scene);
-
         DatabaseHelper.createUsersTable();
         DatabaseHelper.close();
 
+        stage.setScene(scene);
         stage.show();
     }
 
