@@ -35,11 +35,13 @@ public class ChatController {
     int currentId = -1;
 
     // Temporary list of users for testing, TODO: add database of users and chat messages
-    private ObservableList<User> users = FXCollections.observableArrayList();
-    private HashMap<Integer, ObservableList<ChatMessage>> messages = new HashMap<>();
+    private final ObservableList<User> users = FXCollections.observableArrayList();
+    private final HashMap<Integer, ObservableList<ChatMessage>> messages = new HashMap<>();
 
     @FXML
     private void initialize() {
+        send_chat_button.setOnAction(evt -> addChatMessage());
+
         fillWithDummyData();
 
         showUsers();

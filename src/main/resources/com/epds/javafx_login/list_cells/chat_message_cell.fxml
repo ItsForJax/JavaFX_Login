@@ -3,8 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="100.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.ui.ChatMessageCellController">
+<AnchorPane prefHeight="50.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.ui.ChatMessageCellController">
    <children>
       <Label fx:id="chat_message_text" layoutX="237.0" layoutY="42.0" text="Chat Message" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
    </children>
