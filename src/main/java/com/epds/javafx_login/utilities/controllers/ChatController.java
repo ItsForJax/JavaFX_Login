@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -91,10 +92,11 @@ public class ChatController {
     private void showChatMessages(int userId) {
         this.currentId = userId;
 
+        // Show the chat pane and hide the placeholder text about selecting a user
         chat_message_pane.setVisible(true);
         placeholder_pane.setVisible(false);
 
-        chat_list_view.setItems(messages.get(userId));
+        chat_list_view.setItems(messages.get(currentId));
     }
 
     @FXML
@@ -126,8 +128,8 @@ public class ChatController {
                 root = loader.load();
                 controller = loader.getController();
 
-                // Adjusts the width of each cell based on its parent, subtracting 16 due to padding
-                prefWidthProperty().bind(parent.widthProperty().subtract(16));
+                // Adjusts the width of each cell based on its parent
+                prefWidthProperty().bind(parent.widthProperty().subtract(29));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -144,6 +146,15 @@ public class ChatController {
                 // Adds a listener to this cell
                 setOnMouseClicked(mouseEvent -> showChatMessages(user.getId()));
                 controller.chat_user_name.setText(user.getName());
+
+                try {
+                    URL resource = getClass().getResource("/com/epds/javafx_login/images/abstract.png");
+                    Image image = new Image(resource.toExternalForm());
+                    controller.chat_user_image.setImage(image);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Image not found");
+                }
 
                 setGraphic(root);
             }
