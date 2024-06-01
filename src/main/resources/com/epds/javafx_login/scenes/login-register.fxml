@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.LoginRegisterController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.LoginRegisterController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -30,7 +41,7 @@
             <children>
                 <VBox id="login_vbox" prefHeight="295.0" prefWidth="272.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Text fill="#44977d" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" textAlignment="CENTER" wrappingWidth="252.4970703125">
+                        <Text fill="#0d9276" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" textAlignment="CENTER" wrappingWidth="252.4970703125">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
@@ -47,15 +58,15 @@
                             </font>
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-                        <TextField id="border" fx:id="login_username" prefHeight="32.0" prefWidth="254.0" style="-fx-background-color: transparent;">
+                        <TextField id="border" fx:id="login_username" prefHeight="32.0" prefWidth="254.0">
                             <VBox.margin>
                                 <Insets bottom="3.0" />
                             </VBox.margin>
                         </TextField>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-                  <HBox id="border" alignment="CENTER" prefHeight="32.0" prefWidth="200.0" spacing="2.0" styleClass="text-field" stylesheets="@stylesheet.css">
+                  <HBox id="border" alignment="CENTER" prefHeight="0.0" prefWidth="256.0" spacing="2.0" styleClass="text-field">
                      <children>
-                        <PasswordField fx:id="login_password" prefHeight="32.0" prefWidth="254.0" style="-fx-background-color: transparent;" />
+                        <PasswordField fx:id="login_password" prefHeight="18.0" prefWidth="212.0" style="-fx-background-color: transparent;" />
                          <TextField fx:id="login_password_visible" prefHeight="32.0" prefWidth="0.0" style="-fx-background-color: transparent;" />
                         <ImageView fx:id="loginPasswordToggle">
                            <image>
@@ -140,7 +151,7 @@
             <children>
                 <VBox id="register_vbox" prefHeight="295.0" prefWidth="272.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Text fill="#44977d" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTER" textAlignment="CENTER" wrappingWidth="246.98046875">
+                        <Text fill="#0d9276" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTER" textAlignment="CENTER" wrappingWidth="246.98046875">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
@@ -153,16 +164,16 @@
                                 <Font size="12.0" />
                             </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-                        <TextField id="border" fx:id="register_username" prefHeight="52.0" prefWidth="248.0" style="-fx-background-color: transparent;">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="91.240234375" />
+                        <TextField id="border" fx:id="register_username" prefHeight="23.0" prefWidth="250.0" style="-fx-background-color: transparent;">
                             <VBox.margin>
                                 <Insets bottom="3.0" />
                             </VBox.margin>
                         </TextField>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="49.951171875" />
-                  <HBox id="border" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="87.951171875" />
+                  <HBox id="border" alignment="CENTER" prefHeight="17.0" prefWidth="250.0">
                      <children>
-                              <PasswordField fx:id="register_pass" prefHeight="32.0" prefWidth="254.0" style="-fx-background-color: transparent;" />
+                              <PasswordField fx:id="register_pass" prefHeight="14.0" prefWidth="210.0" style="-fx-background-color: transparent;" />
                         <TextField fx:id="register_pass_visible" prefHeight="32.0" prefWidth="0.0" style="-fx-background-color: transparent;" />
                         <ImageView fx:id="registerPasswordToggle">
                            <image>
@@ -173,11 +184,14 @@
                      <padding>
                         <Insets right="2.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
                   </HBox>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" />
-                  <HBox id="border" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" wrappingWidth="139.94384765625" />
+                  <HBox id="border" alignment="CENTER" prefHeight="18.0" prefWidth="250.0">
                      <children>
-                              <PasswordField fx:id="register_confirm_pass" prefHeight="32.0" prefWidth="254.0" style="-fx-background-color: transparent;">
+                              <PasswordField fx:id="register_confirm_pass" prefHeight="11.0" prefWidth="210.0" style="-fx-background-color: transparent;">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -192,12 +206,15 @@
                      <padding>
                         <Insets right="2.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
                   </HBox>
                         <Button fx:id="register_btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="680.0" text="Register" textFill="WHITE" />
                         <HBox alignment="CENTER" prefHeight="28.0" prefWidth="248.0" spacing="20.0">
                             <children>
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account yet? " />
-                                <Button fx:id="go_to_login_btn" mnemonicParsing="false" text="Login" textFill="#44977d" underline="true" />
+                                <Button fx:id="go_to_login_btn" mnemonicParsing="false" text="Login" textFill="#0d9276" underline="true" />
                             </children>
                             <VBox.margin>
                                 <Insets top="10.0" />
