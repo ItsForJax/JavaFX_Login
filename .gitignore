@@ -15,6 +15,7 @@ users.db
 *.ipr
 .idea/
 
+
 ### Eclipse ###
 .apt_generated
 .classpath
