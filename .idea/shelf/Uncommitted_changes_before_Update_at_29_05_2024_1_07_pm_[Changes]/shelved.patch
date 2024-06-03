@@ -1,0 +1,289 @@
+Index: src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.epds.javafx_login.utilities.controllers;\r\n\r\nimport com.epds.javafx_login.Main;\r\nimport com.epds.javafx_login.utilities.DatabaseHelper;\r\nimport javafx.application.Platform;\r\nimport javafx.beans.binding.Bindings;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.control.Alert;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.GridPane;\r\nimport javafx.scene.layout.Pane;\r\n\r\nimport java.io.IOException;\r\nimport java.util.Objects;\r\n\r\npublic class LoginRegisterController {\r\n\r\n    @FXML\r\n    public ImageView loginPasswordToggle;\r\n    @FXML\r\n    public ImageView registerPasswordToggle;\r\n    @FXML\r\n    public ImageView registerPasswordConfirmToggle;\r\n    @FXML\r\n    private TextField login_username;\r\n    @FXML\r\n    private PasswordField login_password;\r\n    @FXML\r\n    private TextField login_password_visible;\r\n    @FXML\r\n    private TextField register_username;\r\n    @FXML\r\n    private PasswordField register_pass;\r\n    @FXML\r\n    private TextField register_pass_visible;\r\n    @FXML\r\n    private PasswordField register_confirm_pass;\r\n    @FXML\r\n    private TextField register_confirm_pass_visible;\r\n    @FXML\r\n    private GridPane grid_pane_register;\r\n    @FXML\r\n    private GridPane grid_pane_login;\r\n    @FXML\r\n    private Pane login_logo_pane, register_logo_pane;\r\n\r\n    private boolean isLoginPasswordVisible = false;\r\n    private boolean isRegisterPasswordVisible = false;\r\n    private boolean isRegisterConfirmPasswordVisible = false;\r\n\r\n    SceneController sceneController;\r\n    private Parent root;\r\n\r\n    @FXML\r\n    protected void initialize() {\r\n        loginPasswordToggle.setOnMouseClicked(event -> {\r\n            isLoginPasswordVisible = togglePasswordVisibility(login_password, login_password_visible, loginPasswordToggle, isLoginPasswordVisible);\r\n        });\r\n        registerPasswordToggle.setOnMouseClicked(event -> {\r\n            isRegisterPasswordVisible = togglePasswordVisibility(register_pass, register_pass_visible, registerPasswordToggle, isRegisterPasswordVisible);\r\n        });\r\n        registerPasswordConfirmToggle.setOnMouseClicked(event -> {\r\n            isRegisterConfirmPasswordVisible = togglePasswordVisibility(register_confirm_pass, register_confirm_pass_visible, registerPasswordConfirmToggle, isRegisterConfirmPasswordVisible);\r\n        });\r\n    }\r\n\r\n    // Toggle pass\r\n    private boolean togglePasswordVisibility(PasswordField passwordField, TextField textField, ImageView toggleIcon, boolean isVisible) {\r\n        if (isVisible) {\r\n            textField.setManaged(false);\r\n            textField.setVisible(false);\r\n            textField.setEditable(false);\r\n            textField.setPrefWidth(0);\r\n            passwordField.setPrefWidth(254);\r\n            passwordField.setManaged(true);\r\n            passwordField.setVisible(true);\r\n            passwordField.setEditable(true);\r\n            passwordField.setFocusTraversable(true);\r\n            passwordField.setText(textField.getText());\r\n            passwordField.requestFocus();\r\n\r\n            passwordField.selectPositionCaret(passwordField.getText().length());\r\n\r\n            passwordField.deselect();\r\n            toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource(\"images/eye.png\")).toString()));\r\n        } else {\r\n            passwordField.setManaged(false);\r\n            passwordField.setVisible(false);\r\n            passwordField.setPrefWidth(0);\r\n            passwordField.setEditable(false);\r\n            textField.setPrefWidth(254);\r\n            textField.setManaged(true);\r\n            textField.setVisible(true);\r\n            textField.setEditable(true);\r\n            textField.setFocusTraversable(true);\r\n            textField.setText(passwordField.getText());\r\n            textField.requestFocus();\r\n\r\n            textField.selectPositionCaret(passwordField.getText().length());\r\n\r\n            textField.deselect();\r\n            toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource(\"images/eye_hide.png\")).toString()));\r\n        }\r\n        return !isVisible;\r\n    }\r\n\r\n    @FXML\r\n    protected void gotoRegister() {\r\n        grid_pane_login.setVisible(false);\r\n        login_logo_pane.setVisible(false);\r\n        grid_pane_register.setVisible(true);\r\n        register_logo_pane.setVisible(true);\r\n    }\r\n\r\n    @FXML\r\n    protected void gotoLogin() {\r\n        grid_pane_register.setVisible(false);\r\n        register_logo_pane.setVisible(false);\r\n        login_logo_pane.setVisible(true);\r\n        grid_pane_login.setVisible(true);\r\n    }\r\n\r\n    @FXML\r\n    protected void login(ActionEvent event) throws IOException {\r\n        String username = login_username.getText();\r\n        String password = isLoginPasswordVisible ? login_password_visible.getText() : login_password.getText();\r\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/com/epds/javafx_login/scenes/main.fxml\"));\r\n        root = loader.load();\r\n        sceneController = loader.getController();\r\n\r\n        Alert alert;\r\n        if (DatabaseHelper.loginUser(username, password)) {\r\n            alert = new Alert(Alert.AlertType.INFORMATION);\r\n            alert.setTitle(\"Login Successful\");\r\n            alert.setHeaderText(null);\r\n            alert.setContentText(\"Welcome!\");\r\n            sceneController.MainApplication(event, username);\r\n\r\n        } else {\r\n            alert = new Alert(Alert.AlertType.ERROR);\r\n            alert.setTitle(\"Login Failed\");\r\n            alert.setHeaderText(null);\r\n            alert.setContentText(\"Incorrect username or password.\");\r\n        }\r\n        alert.showAndWait();\r\n        DatabaseHelper.close();\r\n    }\r\n\r\n    @FXML\r\n    protected void register() {\r\n        String username = register_username.getText();\r\n        String password = isRegisterPasswordVisible ? register_pass_visible.getText() : register_pass.getText();\r\n        String confirmpass = isRegisterConfirmPasswordVisible ? register_confirm_pass_visible.getText() : register_confirm_pass.getText();\r\n\r\n        Alert alert;\r\n        if (!username.isBlank() && !password.isBlank() && !confirmpass.isEmpty()) {\r\n            if (password.equals(confirmpass)) {\r\n                if (DatabaseHelper.registerUser(username, password)) {\r\n                    alert = new Alert(Alert.AlertType.INFORMATION);\r\n                    alert.setTitle(\"Registration Successful\");\r\n                    alert.setHeaderText(null);\r\n                    alert.setContentText(\"User registered successfully.\");\r\n                } else {\r\n                    alert = new Alert(Alert.AlertType.ERROR);\r\n                    alert.setTitle(\"Registration Failed\");\r\n                    alert.setHeaderText(null);\r\n                    alert.setContentText(\"User \" + username + \" already exists!\");\r\n                }\r\n            } else {\r\n                alert = new Alert(Alert.AlertType.ERROR);\r\n                alert.setTitle(\"Registration Failed\");\r\n                alert.setHeaderText(null);\r\n                alert.setContentText(\"Password doesn't match!\");\r\n            }\r\n        } else {\r\n            alert = new Alert(Alert.AlertType.ERROR);\r\n            alert.setTitle(\"Registration Failed\");\r\n            alert.setHeaderText(null);\r\n            alert.setContentText(\"Please fill all items!\");\r\n        }\r\n\r\n        alert.showAndWait();\r\n        DatabaseHelper.close();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java b/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java
+--- a/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java	(revision 1b57660b4e4dfeee94b54dfc64f9b2c327e57dc3)
++++ b/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java	(date 1716959155039)
+@@ -9,6 +9,7 @@
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.Parent;
+ import javafx.scene.control.Alert;
++import javafx.scene.control.CheckBox;
+ import javafx.scene.control.PasswordField;
+ import javafx.scene.control.TextField;
+ import javafx.scene.image.Image;
+@@ -28,6 +29,8 @@
+     @FXML
+     public ImageView registerPasswordConfirmToggle;
+     @FXML
++    public CheckBox remember_me_toggle;
++    @FXML
+     private TextField login_username;
+     @FXML
+     private PasswordField login_password;
+@@ -136,6 +139,9 @@
+ 
+         Alert alert;
+         if (DatabaseHelper.loginUser(username, password)) {
++            if (DatabaseHelper.isNewUser(username)){
++
++            }
+             alert = new Alert(Alert.AlertType.INFORMATION);
+             alert.setTitle("Login Successful");
+             alert.setHeaderText(null);
+@@ -170,7 +176,7 @@
+                     alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setTitle("Registration Failed");
+                     alert.setHeaderText(null);
+-                    alert.setContentText("User " + username + " already exists!");
++                    alert.setContentText("Device already has a user registered.");
+                 }
+             } else {
+                 alert = new Alert(Alert.AlertType.ERROR);
+@@ -184,7 +190,6 @@
+             alert.setHeaderText(null);
+             alert.setContentText("Please fill all items!");
+         }
+-
+         alert.showAndWait();
+         DatabaseHelper.close();
+     }
+Index: src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.epds.javafx_login.utilities;\r\n\r\nimport java.sql.*;\r\n\r\npublic class DatabaseHelper {\r\n\r\n    private static final String DATABASE_URL = \"jdbc:sqlite:users.db\";\r\n    private static Connection conn;\r\n\r\n    private DatabaseHelper() {\r\n    }\r\n\r\n    public static Connection connect() {\r\n        try {\r\n            if (conn == null || conn.isClosed()) {\r\n                Class.forName(\"org.sqlite.JDBC\");\r\n                conn = DriverManager.getConnection(DATABASE_URL);\r\n                System.out.println(\"Connected to the database.\");\r\n            }\r\n        } catch (ClassNotFoundException e) {\r\n            System.out.println(\"SQLite JDBC driver not found: \" + e.getMessage());\r\n        } catch (SQLException e) {\r\n            System.out.println(\"SQL error: \" + e.getMessage());\r\n        }\r\n        return conn;\r\n    }\r\n\r\n    public static void close() {\r\n        try {\r\n            if (conn != null && !conn.isClosed()) {\r\n                conn.close();\r\n                System.out.println(\"Database connection closed.\");\r\n            }\r\n        } catch (SQLException e) {\r\n            System.out.println(\"Error closing database connection: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public static void createUsersTable() {\r\n        String sql = \"CREATE TABLE IF NOT EXISTS users (\"\r\n                + \" id INTEGER PRIMARY KEY AUTOINCREMENT,\"\r\n                + \" username TEXT NOT NULL,\"\r\n                + \" password TEXT NOT NULL\"\r\n                + \");\";\r\n\r\n        try (Connection conn = connect();\r\n             Statement stmt = conn.createStatement()) {\r\n            stmt.execute(sql);\r\n            System.out.println(\"Users table created or already exists.\");\r\n        } catch (SQLException e) {\r\n            System.out.println(\"Error creating users table: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public static boolean registerUser(String username, String password) {\r\n        // Check if the user already exists\r\n        if (userExists(username)) {\r\n            System.out.println(\"Username already exists.\");\r\n            return false;\r\n        }\r\n\r\n        String sql = \"INSERT INTO users(username, password) VALUES(?, ?)\";\r\n\r\n        try (Connection conn = connect();\r\n             PreparedStatement pstmt = conn.prepareStatement(sql)) {\r\n            pstmt.setString(1, username);\r\n            pstmt.setString(2, password);\r\n            pstmt.executeUpdate();\r\n            return true;\r\n        } catch (SQLException e) {\r\n            System.out.println(\"Error registering user: \" + e.getMessage());\r\n            return false;\r\n        }\r\n    }\r\n\r\n    private static boolean userExists(String username) {\r\n        String sql = \"SELECT COUNT(*) FROM users WHERE username = ?\";\r\n\r\n        try (Connection conn = connect();\r\n             PreparedStatement pstmt = conn.prepareStatement(sql)) {\r\n            pstmt.setString(1, username);\r\n            ResultSet rs = pstmt.executeQuery();\r\n            return rs.getInt(1) > 0;\r\n        } catch (SQLException e) {\r\n            System.out.println(\"Error checking if user exists: \" + e.getMessage());\r\n            return false;\r\n        }\r\n    }\r\n\r\n\r\n    public static boolean loginUser(String username, String password) {\r\n        String sql = \"SELECT * FROM users WHERE username = ? AND password = ?\";\r\n\r\n        try (Connection conn = connect();\r\n             PreparedStatement pstmt = conn.prepareStatement(sql)) {\r\n            pstmt.setString(1, username);\r\n            pstmt.setString(2, password);\r\n            ResultSet rs = pstmt.executeQuery();\r\n            return rs.next();\r\n        } catch (SQLException e) {\r\n            System.out.println(\"Error logging in user: \" + e.getMessage());\r\n            return false;\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java b/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java
+--- a/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java	(revision 1b57660b4e4dfeee94b54dfc64f9b2c327e57dc3)
++++ b/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java	(date 1716959155061)
+@@ -36,11 +36,32 @@
+         }
+     }
+ 
++    public static boolean isNewUser(String username) {
++        String sql = "SELECT isNewUser FROM users WHERE username = ?";
++        boolean isNewUser = true;
++
++        try (Connection conn = connect();
++             PreparedStatement pstmt = conn.prepareStatement(sql)) {
++            pstmt.setString(1, username);
++            ResultSet rs = pstmt.executeQuery();
++
++            if (rs.next()) {
++                isNewUser = rs.getBoolean("isNewUser");
++            }
++        } catch (SQLException e) {
++            System.out.println("Error checking if username is a new user: " + e.getMessage());
++        }
++
++        return isNewUser;
++    }
++
++
+     public static void createUsersTable() {
+         String sql = "CREATE TABLE IF NOT EXISTS users ("
+                 + " id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                 + " username TEXT NOT NULL,"
+-                + " password TEXT NOT NULL"
++                + " password TEXT NOT NULL,"
++                + " isNewUser BOOL NOT NULL DEFAULT 1"
+                 + ");";
+ 
+         try (Connection conn = connect();
+@@ -53,9 +74,9 @@
+     }
+ 
+     public static boolean registerUser(String username, String password) {
+-        // Check if the user already exists
+-        if (userExists(username)) {
+-            System.out.println("Username already exists.");
++        // Check if there is already a user registered for this device
++        if (deviceHasUser()) {
++            System.out.println("Device already has a user registered.");
+             return false;
+         }
+ 
+@@ -72,6 +93,22 @@
+             return false;
+         }
+     }
++
++    private static boolean deviceHasUser() {
++        String sql = "SELECT COUNT(*) FROM users";
++        try (Connection conn = connect();
++             Statement stmt = conn.createStatement();
++             ResultSet rs = stmt.executeQuery(sql)) {
++            if (rs.next()) {
++                int count = rs.getInt(1);
++                return count > 0;
++            }
++        } catch (SQLException e) {
++            System.out.println("Error checking device users: " + e.getMessage());
++        }
++        return false;
++    }
++
+ 
+     private static boolean userExists(String username) {
+         String sql = "SELECT COUNT(*) FROM users WHERE username = ?";
+Index: src/main/resources/com/epds/javafx_login/scenes/NewUserInfo.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/epds/javafx_login/scenes/NewUserInfo.fxml b/src/main/resources/com/epds/javafx_login/scenes/NewUserInfo.fxml
+new file mode 100644
+--- /dev/null	(date 1716959155024)
++++ b/src/main/resources/com/epds/javafx_login/scenes/NewUserInfo.fxml	(date 1716959155024)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import java.lang.*?>
++<?import java.util.*?>
++<?import javafx.scene.*?>
++<?import javafx.scene.control.*?>
++<?import javafx.scene.layout.*?>
++
++<AnchorPane xmlns="http://javafx.com/javafx"
++            xmlns:fx="http://javafx.com/fxml"
++            fx:controller="com.epds.javafx_login.scenes.NewUserInfoController"
++            prefHeight="400.0" prefWidth="600.0">
++
++</AnchorPane>
+Index: src/main/java/com/epds/javafx_login/utilities/controllers/NewUserInfoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/epds/javafx_login/utilities/controllers/NewUserInfoController.java b/src/main/java/com/epds/javafx_login/utilities/controllers/NewUserInfoController.java
+new file mode 100644
+--- /dev/null	(date 1716959155013)
++++ b/src/main/java/com/epds/javafx_login/utilities/controllers/NewUserInfoController.java	(date 1716959155013)
+@@ -0,0 +1,4 @@
++package com.epds.javafx_login.utilities.controllers;
++
++public class NewUserInfoController {
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2969ac2e-4527-4a55-b74f-92fa7bdded3f\" name=\"Changes\" comment=\"Deleted users.db\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/images/eye.png\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/images/eye_hide.png\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExportToHTMLSettings\">\r\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$PROJECT_DIR$/../JavaFX_Login\\exportToHTML\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;rizatitar&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/rizatitar/JavaFX_Login.git&quot;,\r\n    &quot;accountId&quot;: &quot;1f8afd88-d1fd-4cf4-9ad9-eed596d3c22b&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2h1z4U0Bt1pkL0W3G8bMnlQ03sO\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.HelloApplication.executor\": \"Run\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.CodyAccountHistoryMigration\": \"true\",\r\n    \"RunOnceActivity.CodyConvertUrlToCodebaseName\": \"true\",\r\n    \"RunOnceActivity.CodyHistoryLlmMigration\": \"true\",\r\n    \"RunOnceActivity.CodyProjectSettingsMigration\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"/Users/rizatitar/Downloads/JavaFX_Login/src/main/resources/com/epds/javafx_login/scenes\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"preferences.JavaFX\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\DelaSoledad\\JavaFX_LoginUI\\JavaFX_Login\\src\\main\\resources\\com\\epds\\javafx_login\" />\r\n      <recent name=\"C:\\DelaSoledad\\JavaFX_LoginUI\\JavaFX_Login\\src\\main\\java\\com\\epds\\javafx_login\\utilities\\controllers\" />\r\n      <recent name=\"C:\\DelaSoledad\\JavaFX_LoginUI\\JavaFX_Login\\src\\main\\resources\\com\\epds\\javafx_login\\scenes\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.epds.javafx_login.utilities.controllers\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2969ac2e-4527-4a55-b74f-92fa7bdded3f\" name=\"Changes\" comment=\"\" />\r\n      <created>1716776180780</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1716776180780</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Structure update, grouped files.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716793349888</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716793349888</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Misc\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716793358634</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716793358634</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Renamed files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716793434517</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716793434517</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Misc\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716793442098</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716793442098</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added navigation\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716796672600</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716796672600</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Implement controller to controller data passage\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716862806529</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716862806529</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Moved Images folder outside the scenes folder\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716874157878</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716874157878</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Added home controller\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716874197895</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716874197895</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Added working logout button\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716874875262</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716874875262</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Added and used method for closing the db instance\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716874910408</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716874910408</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"misc\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716874917805</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716874917805</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Adjusted the main scene size\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716875376578</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716875376578</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Changes on git ignore (users.db)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716876089002</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716876089002</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Deleted users.db\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716876549751</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716876549751</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Updated version to 21\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716944183772</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716944183772</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"16\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Structure update, grouped files.\" />\r\n    <MESSAGE value=\"Renamed files\" />\r\n    <MESSAGE value=\"Misc\" />\r\n    <MESSAGE value=\"Added navigation\" />\r\n    <MESSAGE value=\"Implement controller to controller data passage\" />\r\n    <MESSAGE value=\"Moved Images folder outside the scenes folder\" />\r\n    <MESSAGE value=\"Added home controller\" />\r\n    <MESSAGE value=\"Added working logout button\" />\r\n    <MESSAGE value=\"Added and used method for closing the db instance\" />\r\n    <MESSAGE value=\"misc\" />\r\n    <MESSAGE value=\"Adjusted the main scene size\" />\r\n    <MESSAGE value=\"Changes on git ignore (users.db)\" />\r\n    <MESSAGE value=\"Deleted users.db\" />\r\n    <MESSAGE value=\"Updated version to 21\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Updated version to 21\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 1b57660b4e4dfeee94b54dfc64f9b2c327e57dc3)
++++ b/.idea/workspace.xml	(date 1716959155560)
+@@ -4,14 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Deleted users.db">
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/images/eye.png" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/images/eye_hide.png" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++    <list default="true" id="2969ac2e-4527-4a55-b74f-92fa7bdded3f" name="Changes" comment="Added password visibility toggle">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/NewUserInfoController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/NewUserInfo.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/DatabaseHelper.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epds/javafx_login/utilities/controllers/LoginRegisterController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/login-register.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes/stylesheet.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -61,24 +60,24 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.HelloApplication.executor": "Run",
+-    "Application.Main.executor": "Run",
+-    "RunOnceActivity.CodyAccountHistoryMigration": "true",
+-    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
+-    "RunOnceActivity.CodyHistoryLlmMigration": "true",
+-    "RunOnceActivity.CodyProjectSettingsMigration": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "master",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "/Users/rizatitar/Downloads/JavaFX_Login/src/main/resources/com/epds/javafx_login/scenes",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "preferences.JavaFX"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/Users/rizatitar/Downloads/JavaFX_Login/src/main/resources/com/epds/javafx_login/scenes&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="$PROJECT_DIR$/src/main/resources/com/epds/javafx_login/scenes" />
+@@ -221,7 +220,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1716944183772</updated>
+     </task>
+-    <option name="localTasksCounter" value="16" />
++    <task id="LOCAL-00016" summary="Added password visibility toggle">
++      <option name="closed" value="true" />
++      <created>1716952043619</created>
++      <option name="number" value="00016" />
++      <option name="presentableId" value="LOCAL-00016" />
++      <option name="project" value="LOCAL" />
++      <updated>1716952043619</updated>
++    </task>
++    <option name="localTasksCounter" value="17" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+@@ -239,6 +246,7 @@
+     <MESSAGE value="Changes on git ignore (users.db)" />
+     <MESSAGE value="Deleted users.db" />
+     <MESSAGE value="Updated version to 21" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Updated version to 21" />
++    <MESSAGE value="Added password visibility toggle" />
++    <option name="LAST_COMMIT_MESSAGE" value="Added password visibility toggle" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module com.epds.javafx_login {\r\n    requires javafx.controls;\r\n    requires javafx.fxml;\r\n    requires java.sql;\r\n\r\n\r\n    opens com.epds.javafx_login to javafx.fxml;\r\n    exports com.epds.javafx_login;\r\n    exports com.epds.javafx_login.utilities;\r\n    opens com.epds.javafx_login.utilities to javafx.fxml;\r\n    exports com.epds.javafx_login.utilities.controllers;\r\n    opens com.epds.javafx_login.utilities.controllers to javafx.fxml;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	(revision 1b57660b4e4dfeee94b54dfc64f9b2c327e57dc3)
++++ b/src/main/java/module-info.java	(date 1716953642735)
+@@ -2,6 +2,7 @@
+     requires javafx.controls;
+     requires javafx.fxml;
+     requires java.sql;
++    requires org.xerial.sqlitejdbc;
+ 
+ 
+     opens com.epds.javafx_login to javafx.fxml;
