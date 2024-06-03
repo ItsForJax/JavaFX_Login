@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class Main extends Application {
     @Override
@@ -16,7 +15,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("scenes/login-register.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         stage.setTitle("Hello!");
-        stage.setResizable(false);
+        stage.setResizable(true);
 
         //  Removes the default header design
         //stage.initStyle(StageStyle.UNDECORATED);
