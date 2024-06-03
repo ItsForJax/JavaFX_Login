@@ -24,7 +24,7 @@
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Text>
-                        <ImageView fx:id="profile" fitHeight="120.0" fitWidth="127.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+                        <ImageView fx:id="profile" fitHeight="120.0" fitWidth="120.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="24.0">
                             <image>
                                 <Image url="@images/profile.jpeg" />
                             </image>
@@ -59,7 +59,7 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="logout_btn" layoutY="456.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="Logout" textFill="#0d9276" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="logout_btn" layoutY="456.0" mnemonicParsing="false" onAction="#navigateToLoginRegister" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="Logout" textFill="#0d9276" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font size="14.0" />
                             </font>
