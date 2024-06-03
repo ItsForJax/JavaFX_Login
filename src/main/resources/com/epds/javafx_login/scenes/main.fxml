@@ -10,26 +10,26 @@
     <children>
         <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="198.0000203450521" minWidth="10.0" prefWidth="170.6666463216146" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="400.0" prefWidth="600.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="400.0" prefWidth="600.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="500.0" minHeight="400.0" percentHeight="100.0" prefHeight="400.0" valignment="CENTER" vgrow="NEVER" />
             </rowConstraints>
             <children>
-                <AnchorPane maxWidth="199.0" minWidth="199.0" prefHeight="495.0" prefWidth="199.0" style="-fx-background-color: white; -fx-opacity: 5;" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                <AnchorPane minWidth="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-opacity: 5;" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                     <children>
-                        <Text fx:id="username" fill="#4d4d4d" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="199.0">
+                        <Text fx:id="username" fill="#4d4d4d" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="199.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Text>
-                        <ImageView fx:id="profile" fitHeight="120.0" fitWidth="127.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profile" fitHeight="120.0" fitWidth="127.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
                             <image>
                                 <Image url="@images/profile.jpeg" />
                             </image>
                         </ImageView>
-                        <Button fx:id="home_btn" layoutX="21.0" layoutY="200.0" mnemonicParsing="false" onAction="#navigationInit" prefHeight="33.0" prefWidth="177.0" styleClass="main_side_button" text="HOME" textFill="#44977d" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="15.0">
+                        <Button fx:id="home_btn" layoutX="21.0" layoutY="200.0" mnemonicParsing="false" onAction="#navigationInit" prefHeight="33.0" prefWidth="177.0" styleClass="main_side_button" text="HOME" textFill="#44977d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -39,7 +39,7 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="chat_btn" layoutX="18.0" layoutY="235.0" mnemonicParsing="false" onAction="#navigateToChat" prefHeight="33.0" prefWidth="163.0" styleClass="main_side_button" text="CHAT" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0">
+                        <Button fx:id="chat_btn" layoutX="18.0" layoutY="235.0" mnemonicParsing="false" onAction="#navigateToChat" prefHeight="33.0" prefWidth="163.0" styleClass="main_side_button" text="CHAT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -49,7 +49,7 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="page_3" layoutX="20.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToPage3" prefHeight="32.0" prefWidth="163.0" styleClass="main_side_button" text="PAGE 3" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="16.0">
+                        <Button fx:id="page_3" layoutX="20.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToPage3" prefHeight="32.0" prefWidth="163.0" styleClass="main_side_button" text="PAGE 3" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -59,7 +59,7 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="logout_btn" layoutY="456.0" mnemonicParsing="false" onAction="#navigateToLoginRegister" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="Logout" textFill="#0d9276">
+                        <Button fx:id="logout_btn" layoutY="456.0" mnemonicParsing="false" onAction="#navigateToLoginRegister" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="Logout" textFill="#0d9276" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -71,7 +71,7 @@
                         </Button>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="main_container" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                <AnchorPane fx:id="main_container" GridPane.columnIndex="1" />
             </children>
         </GridPane>
     </children>
