@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.ChatController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.ChatController">
     <children>
-        <GridPane alignment="CENTER" layoutY="-1.0" prefHeight="401.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+        <GridPane alignment="CENTER" layoutY="-1.0" prefHeight="401.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="287.0" minWidth="10.0" prefWidth="200.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="10.0" prefWidth="384.0" />
@@ -27,26 +18,26 @@
             </rowConstraints>
             <children>
                 <ListView fx:id="user_list_view" prefHeight="401.0" prefWidth="204.0" />
-                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" GridPane.columnIndex="1">
+                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" visible="false" GridPane.columnIndex="1">
                     <children>
-                        <Pane layoutY="-1.0" prefHeight="48.0" prefWidth="384.0" style="-fx-background-color: #F2F2F2;">
+                        <Pane fx:id="user_details_pane" layoutY="-1.0" prefHeight="48.0" prefWidth="384.0" style="-fx-background-color: #F2F2F2;">
                             <children>
-                                <ImageView fx:id="user_image" fitHeight="34.0" fitWidth="36.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="profile_user_image" fitHeight="34.0" fitWidth="36.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@images/profile.jpeg" />
                                     </image>
                                 </ImageView>
-                                <Label layoutX="59.0" layoutY="7.0" prefHeight="17.0" prefWidth="198.0" text="Users Name">
+                                <Label fx:id="profile_user_name" layoutX="59.0" layoutY="7.0" prefHeight="17.0" prefWidth="198.0" text="Users Name">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="59.0" layoutY="28.0" prefHeight="17.0" prefWidth="50.0" text="Online" textFill="#495057">
+                                <Label fx:id="profile_online_status" layoutX="59.0" layoutY="28.0" prefHeight="17.0" prefWidth="50.0" text="Online" textFill="#495057">
                                     <font>
                                         <Font size="11.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="send_delete_button" layoutX="335.0" layoutY="4.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="30.0" style="-fx-background-color: null;">
+                                <Button fx:id="profile_delete_button" layoutX="335.0" layoutY="4.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="30.0" style="-fx-background-color: null;">
                                     <graphic>
                                         <StackPane>
                                             <children>
