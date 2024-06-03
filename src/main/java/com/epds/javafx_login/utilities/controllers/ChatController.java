@@ -38,6 +38,13 @@ public class ChatController {
     @FXML
     private Label profile_user_name;
 
+    @FXML
+    private Button new_chat_user_button;
+    @FXML
+    private TextField new_chat_user_text;
+
+
+    int userId = 0;
     int currentId = -1;
 
     // Temporary list of users for testing, TODO: add database of users and chat messages
@@ -47,6 +54,8 @@ public class ChatController {
     @FXML
     private void initialize() {
         send_chat_button.setOnAction(evt -> addChatMessage());
+        new_chat_user_button.setOnAction(evt -> addNewChatUser());
+        chat_message_pane.setVisible(false);
 
         user_list_view.setCellFactory(userListView -> new ChatUserListCell(userListView));
         chat_list_view.setCellFactory(chatMessageListView -> new ChatMessageListCell(chatMessageListView));
@@ -58,9 +67,9 @@ public class ChatController {
 
     private void fillWithDummyData() {
         users = FXCollections.observableArrayList(
-                new User(0, "Me, myself, and I"),
-                new User(1, "Somebody else"),
-                new User(2, "The 3rd Impact")
+                new User(userId++, "Me, myself, and I"),
+                new User(userId++, "Somebody else"),
+                new User(userId++, "The 3rd Impact")
         );
 
         ObservableList<ChatMessage> msgs = FXCollections.observableArrayList(
@@ -77,6 +86,17 @@ public class ChatController {
                 new ChatMessage("Who this????")
         );
         messages.put(2, msgs2);
+    }
+
+    @FXML
+    private void addNewChatUser() {
+        String new_username = new_chat_user_text.getText();
+        if (!new_username.isEmpty()) {
+            users.add(new User(userId, new_username));
+            messages.put(userId, FXCollections.observableArrayList());
+
+            userId += 1;
+        }
     }
 
     @FXML
@@ -102,7 +122,7 @@ public class ChatController {
         String text = chat_text.getText();
 
         if (!text.isEmpty()) {
-            messages.get(currentId).add(new ChatMessage(chat_text.getText()));
+            messages.get(currentId).add(new ChatMessage(text));
             chat_text.setText("");
             chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
         }

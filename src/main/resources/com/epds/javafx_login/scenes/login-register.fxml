@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.LoginRegisterController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.LoginRegisterController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -29,14 +18,14 @@
     <children>
         <GridPane fx:id="grid_pane_login">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="50.0" prefWidth="50.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.33331298828125" minWidth="10.0" prefWidth="296.6666259765625" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="25.0" prefWidth="25.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="25.0" prefWidth="25.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints fillHeight="false" maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                <RowConstraints fillHeight="false" minHeight="75.0" prefHeight="75.0" vgrow="ALWAYS" />
                 <RowConstraints maxHeight="335.33333333333337" minHeight="10.0" prefHeight="282.6666666666667" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="75.0" prefHeight="75.0" vgrow="ALWAYS" />
             </rowConstraints>
             <children>
                 <VBox id="login_vbox" prefHeight="295.0" prefWidth="272.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -139,14 +128,14 @@
         </Pane>
         <GridPane fx:id="grid_pane_register" visible="false" GridPane.columnIndex="1">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="50.0" prefWidth="50.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.66666666666663" minWidth="10.0" prefWidth="276.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="50.0" prefWidth="50.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints fillHeight="false" maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                <RowConstraints fillHeight="false" minHeight="75.0" prefHeight="75.0" vgrow="ALWAYS" />
                 <RowConstraints maxHeight="351.5" minHeight="10.0" prefHeight="348.5" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="80.0" minHeight="20.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="20.0" prefHeight="67.0" vgrow="ALWAYS" />
             </rowConstraints>
             <children>
                 <VBox id="register_vbox" prefHeight="295.0" prefWidth="272.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -234,7 +223,7 @@
                         <Image url="@../images/abstract2.png" />
                     </image>
                 </ImageView>
-                <Label alignment="CENTER" layoutX="123.0" layoutY="157.0" prefHeight="30.0" prefWidth="176.0" text="Welcome to IIMS!" textFill="#44977d">
+                <Label alignment="CENTER" layoutX="123.0" layoutY="157.0" prefHeight="32.0" prefWidth="192.0" text="Welcome to IIMS!" textFill="#44977d">
                     <font>
                         <Font name="System Bold" size="22.0" />
                     </font>
