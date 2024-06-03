@@ -102,7 +102,7 @@
         </GridPane>
         <Pane fx:id="login_logo_pane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-                <ImageView fitHeight="386.0" fitWidth="387.0" layoutX="8.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="386.0" fitWidth="400.0" layoutX="8.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/abstract.png" />
                     </image>
