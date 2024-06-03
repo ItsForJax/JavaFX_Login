@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_29_05_2024_9_28_am_[Changes]" date="1716946132113" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_9_28_am_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 29/05/2024 9:28 am [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/com/epds/javafx_login/images/eye_hide.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_9_28_am_[Changes]/eye_hide.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/main/resources/com/epds/javafx_login/images/eye.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2024_9_28_am_[Changes]/eye.png" />
+  </binary>
+</changelist>

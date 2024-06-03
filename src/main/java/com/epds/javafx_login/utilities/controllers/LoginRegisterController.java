@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -27,6 +24,12 @@ public class LoginRegisterController {
     public ImageView registerPasswordToggle;
     @FXML
     public ImageView registerPasswordConfirmToggle;
+    @FXML
+    public HBox login_pass_hbox;
+    @FXML
+    public HBox register_pass_hbox;
+    @FXML
+    public HBox confirm_register_pass_hbox;
     @FXML
     private TextField login_username;
     @FXML
@@ -60,6 +63,17 @@ public class LoginRegisterController {
     public MainController mainController;
     private Parent root;
 
+
+    private void borderSetter(TextInputControl input, HBox hBox){
+        input.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                hBox.setStyle("-fx-border-color: #0D9276;");
+            } else {
+                hBox.setStyle("-fx-border-color: #cccccc;");
+            }
+        });
+    }
+
     @FXML
     protected void initialize() throws IOException {
         login_btn.setOnAction(event -> login(event));
@@ -67,18 +81,40 @@ public class LoginRegisterController {
         register_btn.setOnAction(event -> register());
         go_to_login_btn.setOnAction(event -> gotoLogin());
 
+        borderSetter(login_password, login_pass_hbox);
+        borderSetter(login_password_visible,login_pass_hbox);
+
+        borderSetter(register_confirm_pass,confirm_register_pass_hbox);
+        borderSetter(register_confirm_pass_visible,confirm_register_pass_hbox);
+
+        borderSetter(register_pass_visible,register_pass_hbox);
+        borderSetter(register_pass,register_pass_hbox);
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
         root = loader.load();
         mainController = loader.getController();
 
         loginPasswordToggle.setOnMouseClicked(event -> {
-            isLoginPasswordVisible = togglePasswordVisibility(login_password, login_password_visible, loginPasswordToggle, isLoginPasswordVisible);
+            isLoginPasswordVisible = togglePasswordVisibility(
+                    login_password,
+                    login_password_visible,
+                    loginPasswordToggle,
+                    isLoginPasswordVisible);
         });
         registerPasswordToggle.setOnMouseClicked(event -> {
-            isRegisterPasswordVisible = togglePasswordVisibility(register_pass, register_pass_visible, registerPasswordToggle, isRegisterPasswordVisible);
+            isRegisterPasswordVisible = togglePasswordVisibility(
+                    register_pass,
+                    register_pass_visible,
+                    registerPasswordToggle,
+                    isRegisterPasswordVisible);
         });
         registerPasswordConfirmToggle.setOnMouseClicked(event -> {
-            isRegisterConfirmPasswordVisible = togglePasswordVisibility(register_confirm_pass, register_confirm_pass_visible, registerPasswordConfirmToggle, isRegisterConfirmPasswordVisible);
+            isRegisterConfirmPasswordVisible = togglePasswordVisibility(
+                    register_confirm_pass,
+                    register_confirm_pass_visible,
+                    registerPasswordConfirmToggle,
+                    isRegisterConfirmPasswordVisible);
         });
     }
 
@@ -98,7 +134,6 @@ public class LoginRegisterController {
             passwordField.requestFocus();
             passwordField.positionCaret(lastCaretPosition);
 
-            passwordField.deselect();
             toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/eye.png")).toString()));
         } else {
             int lastCaretPosition = passwordField.getCaretPosition();
@@ -116,6 +151,13 @@ public class LoginRegisterController {
 
             toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/eye_hide.png")).toString()));
         }
+
+        if(textField.isFocused() || passwordField.isFocused()){
+            login_pass_hbox.setStyle("-fx-border-color: #0D9276");
+        } else {
+            login_pass_hbox.setStyle("-fx-border-color: #cccccc");
+        }
+
         return !isVisible;
     }
 
