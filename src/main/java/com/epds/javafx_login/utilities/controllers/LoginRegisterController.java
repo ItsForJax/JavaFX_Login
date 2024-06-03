@@ -7,11 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -47,7 +49,10 @@ public class LoginRegisterController {
     private GridPane grid_pane_login;
     @FXML
     private Pane login_logo_pane, register_logo_pane;
-
+    @FXML
+    private Button login_btn, go_to_register_btn,
+                    register_btn, go_to_login_btn;
+    @FXML
     private boolean isLoginPasswordVisible = false;
     private boolean isRegisterPasswordVisible = false;
     private boolean isRegisterConfirmPasswordVisible = false;
@@ -57,6 +62,10 @@ public class LoginRegisterController {
 
     @FXML
     protected void initialize() throws IOException {
+        login_btn.setOnAction(event -> login(event));
+        go_to_register_btn.setOnAction(event -> gotoRegister());
+        register_btn.setOnAction(event -> register());
+        go_to_login_btn.setOnAction(event -> gotoLogin());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
         root = loader.load();
@@ -76,6 +85,7 @@ public class LoginRegisterController {
     // Toggle pass
     private boolean togglePasswordVisibility(PasswordField passwordField, TextField textField, ImageView toggleIcon, boolean isVisible) {
         if (isVisible) {
+            int lastCaretPosition = textField.getCaretPosition();
             textField.setManaged(false);
             textField.setVisible(false);
             textField.setEditable(false);
@@ -84,30 +94,26 @@ public class LoginRegisterController {
             passwordField.setManaged(true);
             passwordField.setVisible(true);
             passwordField.setEditable(true);
-            passwordField.setFocusTraversable(true);
             passwordField.setText(textField.getText());
             passwordField.requestFocus();
-
-            passwordField.selectPositionCaret(passwordField.getText().length());
+            passwordField.positionCaret(lastCaretPosition);
 
             passwordField.deselect();
             toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/eye.png")).toString()));
         } else {
+            int lastCaretPosition = passwordField.getCaretPosition();
             passwordField.setManaged(false);
             passwordField.setVisible(false);
-            passwordField.setPrefWidth(0);
             passwordField.setEditable(false);
+            passwordField.setPrefWidth(0);
             textField.setPrefWidth(254);
             textField.setManaged(true);
             textField.setVisible(true);
             textField.setEditable(true);
-            textField.setFocusTraversable(true);
             textField.setText(passwordField.getText());
             textField.requestFocus();
+            textField.positionCaret(lastCaretPosition);
 
-            textField.selectPositionCaret(passwordField.getText().length());
-
-            textField.deselect();
             toggleIcon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/eye_hide.png")).toString()));
         }
         return !isVisible;
@@ -130,7 +136,7 @@ public class LoginRegisterController {
     }
 
     @FXML
-    protected void login(ActionEvent event) throws IOException {
+    protected void login(ActionEvent event) {
         String username = login_username.getText();
         String password = isLoginPasswordVisible ? login_password_visible.getText() : login_password.getText();
 

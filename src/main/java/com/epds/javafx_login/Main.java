@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
     @Override
@@ -20,11 +21,10 @@ public class Main extends Application {
         //  Removes the default header design
         //stage.initStyle(StageStyle.UNDECORATED);
 
-        stage.setScene(scene);
-
         DatabaseHelper.createUsersTable();
         DatabaseHelper.close();
 
+        stage.setScene(scene);
         stage.show();
     }
 
