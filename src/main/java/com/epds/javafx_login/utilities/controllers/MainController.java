@@ -8,8 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -18,18 +20,21 @@ import java.util.Objects;
 
 public class MainController {
 
-
-    public GridPane grid;
-    public Button home_btn;
-    public Button chat_button;
-    public Button page_3;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private Button home_btn, chat_btn,
+                    page_3, logout_btn;
+    @FXML
     public AnchorPane main_container;
+    @FXML
+    private Text username;
+    @FXML
+    private ImageView profile;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    @FXML
-    private Text username;
 
     private static final String USERINFO_FXML_PATH = "/com/epds/javafx_login/scenes/user-details.fxml";
     private static final String MAIN_FXML_PATH = "/com/epds/javafx_login/scenes/main.fxml";
@@ -45,7 +50,7 @@ public class MainController {
             MainController controller = loader.getController();
             controller.setUser(user);
 
-            controller.navigationInit(event);
+            controller.navigationInit();
 
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -55,6 +60,16 @@ public class MainController {
             e.printStackTrace();
             showErrorAlert("Error", "An error occurred while loading the main application scene.");
         }
+    }
+
+    @FXML
+    private void initialize() {
+        home_btn.setOnAction(event -> navigationInit());
+        chat_btn.setOnAction(event -> navigateToChat());
+        page_3.setOnAction(event -> navigateToPage3());
+        logout_btn.setOnAction(event -> navigateToLoginRegister(event));
+        Circle clip = new Circle(63.5, 60, 60);
+        profile.setClip(clip);
     }
 
     @FXML
@@ -82,7 +97,7 @@ public class MainController {
     }
 
     @FXML
-    public void LoginRegister(ActionEvent event) {
+    public void navigateToLoginRegister(ActionEvent event) {
         try {
             switchScene(event, LOGIN_REGISTER_FXML_PATH);
         } catch (IOException e) {
@@ -108,19 +123,31 @@ public class MainController {
         alert.showAndWait();
     }
 
-    public void navigationInit(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/home.fxml")));
-        grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
+    public void navigationInit() {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/home.fxml")));
+            grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void navigateToPage3(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/page3.fxml")));
-        grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
+    public void navigateToPage3() {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/page3.fxml")));
+            grid.add(root, 1, 0); // Assuming 'grid' is your GridPane instance
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
-    protected void navigateToChat() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/chat.fxml")));
-        grid.add(root, 1, 0);
+    protected void navigateToChat() {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/epds/javafx_login/scenes/chat.fxml")));
+            grid.add(root, 1, 0);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
