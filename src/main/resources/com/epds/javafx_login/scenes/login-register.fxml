@@ -223,7 +223,7 @@
                         <Image url="@../images/abstract2.png" />
                     </image>
                 </ImageView>
-                <Label alignment="CENTER" layoutX="123.0" layoutY="157.0" prefHeight="30.0" prefWidth="176.0" text="Welcome to IIMS!" textFill="#44977d">
+                <Label alignment="CENTER" layoutX="123.0" layoutY="157.0" prefHeight="32.0" prefWidth="192.0" text="Welcome to IIMS!" textFill="#44977d">
                     <font>
                         <Font name="System Bold" size="22.0" />
                     </font>

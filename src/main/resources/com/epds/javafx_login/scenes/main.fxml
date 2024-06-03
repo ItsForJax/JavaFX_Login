@@ -29,7 +29,7 @@
                                 <Image url="@images/profile.jpeg" />
                             </image>
                         </ImageView>
-                        <Button fx:id="home_btn" layoutX="21.0" layoutY="200.0" mnemonicParsing="false" onAction="#navigationInit" prefHeight="33.0" prefWidth="177.0" styleClass="main_side_button" text="HOME" textFill="#44977d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="home_btn" layoutX="21.0" layoutY="200.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="177.0" styleClass="main_side_button" text="HOME" textFill="#44977d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -39,7 +39,7 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="chat_btn" layoutX="18.0" layoutY="235.0" mnemonicParsing="false" onAction="#navigateToChat" prefHeight="33.0" prefWidth="163.0" styleClass="main_side_button" text="CHAT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="chat_btn" layoutX="18.0" layoutY="235.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="163.0" styleClass="main_side_button" text="CHAT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -49,7 +49,7 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="page_3" layoutX="20.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToPage3" prefHeight="32.0" prefWidth="163.0" styleClass="main_side_button" text="PAGE 3" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="page_3" layoutX="20.0" layoutY="271.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="163.0" styleClass="main_side_button" text="PAGE 3" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -59,7 +59,7 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="logout_btn" layoutY="456.0" mnemonicParsing="false" onAction="#navigateToLoginRegister" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="Logout" textFill="#0d9276" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="logout_btn" layoutY="456.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="Logout" textFill="#0d9276" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font size="14.0" />
                             </font>
