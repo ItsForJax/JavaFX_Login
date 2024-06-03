@@ -28,19 +28,15 @@ public class UserDetailsController {
     @FXML public Button user_detail_submit;
     @FXML public TextField usernameField;
     @FXML private boolean isLoginPasswordVisible = false;
-    @FXML
-    public ImageView loginPasswordToggle;
-    @FXML
-    public TextField login_password_visible;
-    @FXML
-    public PasswordField login_password;
+    @FXML public ImageView loginPasswordToggle;
+    @FXML public TextField login_password_visible;
+    @FXML public PasswordField login_password;
 
     @FXML
     protected void initialize() throws IOException {
         loginPasswordToggle.setOnMouseClicked(event -> {
             isLoginPasswordVisible = togglePasswordVisibility(login_password, login_password_visible, loginPasswordToggle, isLoginPasswordVisible);
         });
-
 
         user_detail_submit.setOnAction(event -> {
             try {
