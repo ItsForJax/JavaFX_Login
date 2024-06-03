@@ -47,6 +47,7 @@ public class ChatController {
     @FXML
     private void initialize() {
         send_chat_button.setOnAction(evt -> addChatMessage());
+        chat_message_pane.setVisible(false);
 
         user_list_view.setCellFactory(userListView -> new ChatUserListCell(userListView));
         chat_list_view.setCellFactory(chatMessageListView -> new ChatMessageListCell(chatMessageListView));
