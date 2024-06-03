@@ -151,14 +151,11 @@
 }
 
 
-/*--------------- MAIN CSS ---------------*/
-
-
-
+/*--------------- CHAT CSS ---------------*/
 #chat_list_view {
  -fx-background-color: null;
  -fx-border-color: #e3e3e3;
- -fx-border-width: 0 0 1 0;
+ -fx-border-width: 1 0 1 0;
 }
 
 #user_list_view {
@@ -169,12 +166,17 @@
 
 /* Change the background color of the ListView */
 .list-view {
-    -fx-background-color: #8EC3B0; /* light gray background color */
+    -fx-background-color: #fafafa;
+}
+
+#chat_list_view .list-cell {
+    -fx-background-color: white;
+    -fx-border-width: 0;
 }
 
 /* Change the background color of the ListView cells */
 .list-cell {
-    -fx-background-color: #8EC3B0; /* light gray background color */
+    -fx-background-color: #8EC3B0;
 }
 
 
