@@ -18,9 +18,9 @@
             </rowConstraints>
             <children>
                 <ListView fx:id="user_list_view" prefHeight="401.0" prefWidth="204.0" />
-                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" GridPane.columnIndex="1">
+                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" visible="false" GridPane.columnIndex="1">
                     <children>
-                  <AnchorPane fx:id="user_details_pane" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="user_details_pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                                 <ImageView fx:id="profile_user_image" fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
                                     <image>
