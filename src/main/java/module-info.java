@@ -3,6 +3,12 @@ module com.epds.javafx_login {
     requires javafx.fxml;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
+    requires retrofit2;
+    requires retrofit2.converter.gson;
+    requires retrofit2.adapter.rxjava3;
+    requires io.reactivex.rxjava3;
+    requires okhttp3;
+    requires com.google.gson;
 
     exports com.epds.javafx_login;
     opens com.epds.javafx_login to javafx.fxml;
