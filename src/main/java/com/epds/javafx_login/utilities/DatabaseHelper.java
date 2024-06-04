@@ -12,6 +12,24 @@ public class DatabaseHelper {
     private DatabaseHelper() {
     }
 
+    public static String getUserEmail() {
+        String sql = "SELECT email FROM users ORDER BY id LIMIT 1";
+        String email = null;
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            if (rs.next()) {
+                email = rs.getString("email");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting first email: " + e.getMessage());
+        }
+
+        return email;
+    }
+
     public static Connection connect() {
         try {
             if (conn == null || conn.isClosed()) {

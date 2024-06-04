@@ -2,9 +2,7 @@ package com.epds.javafx_login.utilities.controllers;
 
 import com.epds.javafx_login.api.chat.ChatApiClient;
 import com.epds.javafx_login.api.chat.ChatApiService;
-import com.epds.javafx_login.api.chat.model.ChatItem;
-import com.epds.javafx_login.api.chat.model.Ticket;
-import com.epds.javafx_login.api.chat.model.TicketResponse;
+import com.epds.javafx_login.api.chat.model.*;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.entities.User;
 import com.epds.javafx_login.ui.ChatMessageCellController;
@@ -21,6 +19,8 @@ import javafx.scene.paint.Paint;
 import retrofit2.Response;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -139,6 +139,8 @@ public class ChatController {
     private void showChatMessages(int userId) {
         this.currentId = userId;
 
+        System.out.println(userId);
+
         // Show the chat pane and hide the placeholder text about selecting a user
         chat_message_pane.setVisible(true);
         placeholder_pane.setVisible(false);
@@ -155,9 +157,38 @@ public class ChatController {
         String text = chat_text.getText();
 
         if (!text.isEmpty()) {
-            messages.get(currentId).add(new ChatMessage(text));
+//            messages.get(currentId).add(new ChatMessage(text));
+
+            // Creating a new ticket
+            Date ticketTimestamp = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            String formattedTicketTimestamp = dateFormat.format(ticketTimestamp);
+
+            MessageRequest messageRequest = new MessageRequest(
+                    formattedTicketTimestamp,
+                    "user123",
+                    text,
+                    false
+            );
+
+            apiClient.sendMessage(String.valueOf(currentId + 1), messageRequest)
+                    .subscribe(
+                            response -> {
+                                if (response.isSuccessful()) {
+                                    TicketResponse updatedTicket = response.body();
+                                    // Handle the updated ticket
+                                } else {
+                                    // Handle the error
+                                }
+                            },
+                            error -> {
+                                // Handle the error
+                            }
+                    );
+
             chat_text.setText("");
             chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
+
         }
     }
 
