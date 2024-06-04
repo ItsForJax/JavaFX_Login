@@ -87,10 +87,17 @@
 
 
 /* --------------- MAIN CSS --------------- */
+.main_pane {
+    -fx-border-color: null;
+    -fx-border-width: 0;
+}
 .main_side_button {
     -fx-background-color: transparent;
     -fx-border-width: 2px;
-    -fx-text-fill: 	#4d4d4d;
+    -fx-text-fill: 	#0D9276;
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 30;
+
 }
 
 .main_side_button:pressed, .main_side_button:focused  {
@@ -119,8 +126,8 @@
 }
 
 #svgIcon {
-    -fx-fill: black; /* Sets the fill color of the SVG icon */
-    -fx-stroke: black; /* Matches the stroke color to the current text color */
+    -fx-fill: white; /* Sets the fill color of the SVG icon */
+    -fx-stroke: #0D9276; /* Matches the stroke color to the current text color */
     -fx-stroke-linecap: round; /* Sets the stroke line cap to round */
     -fx-stroke-linejoin: round; /* Sets the stroke line join to round */
     -fx-stroke-width: 2; /* Sets the stroke width */
@@ -134,20 +141,20 @@
 }
 
 #svgIcon_logout {
-    -fx-fill: #0D9276;
+    -fx-fill:  #0D9276;
     -fx-stroke-linecap: round;
     -fx-stroke-linejoin: round;
     -fx-stroke-width: 1;
 }
 
 .main_side_button:hover #svgIcon {
-    -fx-fill: #8EC3B0; /* Sets the fill color of the SVG icon on hover */
+
     -fx-stroke: #8EC3B0;
 }
 
 .main_side_button:focused #svgIcon {
-    -fx-fill: #FFF;
-    -fx-stroke: #FFF;
+    -fx-fill: #0D9276;
+    -fx-stroke: white;
 }
 
 
@@ -167,17 +174,62 @@
 /* Change the background color of the ListView */
 .list-view {
     -fx-background-color: #fafafa;
+
+}
+
+.user_list_pane {
+ -fx-border-color: #e3e3e3;
+ -fx-border-width: 0 1 0 0;
 }
 
 #chat_list_view .list-cell {
     -fx-background-color: white;
     -fx-border-width: 0;
+
 }
 
 /* Change the background color of the ListView cells */
 .list-cell {
-    -fx-background-color: #8EC3B0;
+    -fx-background-color: #fafafa;
+    -fx-text-fill: 	#FFF;
 }
+
+.list-cell:filled:selected, .list-cell:filled:selected:hover {
+    -fx-background-color: #86c8ba; /* Change this to your desired color */
+    -fx-text-fill: white; /* Change text color if needed */
+}
+
+#svgIcon_add {
+    -fx-fill: #86c8ba;
+    -fx-stroke-linecap: round;
+    -fx-stroke-linejoin: round;
+    -fx-stroke-width: 1;
+}
+
+#svgIcon_search {
+    -fx-fill: #fafafa;
+    -fx-stroke-linecap: round;
+    -fx-stroke-linejoin: round;
+    -fx-stroke-width: 1;
+}
+
+#search_field {
+    -fx-border-color: #e3e3e3;
+    -fx-border-width: 1 0 1 1;
+    -fx-border-radius: 3 0 0 3;
+    -fx-background-color: white;
+    -fx-background-radius: 3 0 3 3;
+}
+
+#search_btn {
+    -fx-border-color: #0D9276;
+    -fx-border-width: 1 1 1 0;
+    -fx-border-radius: 0 3 3 0;
+   -fx-background-color: #0D9276;
+   -fx-background-radius: 0 3 3 0;
+
+}
+
 
 
 

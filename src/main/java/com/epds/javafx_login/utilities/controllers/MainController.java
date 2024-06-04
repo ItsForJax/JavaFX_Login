@@ -24,7 +24,7 @@ public class MainController {
     private GridPane grid;
     @FXML
     private Button home_btn, chat_btn,
-                    page_3, logout_btn;
+            page_3, logout_btn;
     @FXML
     public AnchorPane main_pane;
     @FXML
@@ -68,8 +68,8 @@ public class MainController {
         chat_btn.setOnAction(event -> navigateToChat());
         page_3.setOnAction(event -> navigateToPage3());
         logout_btn.setOnAction(event -> navigateToLoginRegister(event));
-        Circle clip = new Circle(63.5, 60, 60);
-        profile.setClip(clip);
+        // Circle clip = new Circle(63.5, 60, 60);
+        // profile.setClip(clip);
     }
 
     @FXML

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.MainController">
+<AnchorPane stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.MainController">
     <children>
-        <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <GridPane fx:id="grid" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
                 <ColumnConstraints hgrow="ALWAYS" minWidth="400.0" prefWidth="600.0" />
@@ -17,21 +24,21 @@
                 <RowConstraints maxHeight="500.0" minHeight="400.0" percentHeight="100.0" prefHeight="400.0" valignment="CENTER" vgrow="NEVER" />
             </rowConstraints>
             <children>
-                <AnchorPane minWidth="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-opacity: 5;" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                <AnchorPane minWidth="186.0" prefHeight="500.0" prefWidth="186.0" style="-fx-background-color: white;" styleClass="main_pane" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                     <children>
-                        <Text fx:id="username" fill="#4d4d4d" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="199.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+                        <Text fx:id="username" layoutX="1.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="199.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.53125">
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Text>
-                        <ImageView fx:id="profile" fitHeight="120.0" fitWidth="120.0" layoutX="39.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="24.0">
+                        <ImageView fitHeight="152.0" fitWidth="131.0" layoutX="35.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="24.0">
                             <image>
-                                <Image url="@images/profile.jpeg" />
+                                <Image url="@../images/IIMS.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="home_btn" layoutX="21.0" layoutY="200.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="177.0" styleClass="main_side_button" text="HOME" textFill="#44977d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="home_btn" layoutX="21.0" layoutY="200.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="177.0" styleClass="main_side_button" text="Home" textFill="#44977d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
-                                <Font name="System Bold" size="14.0" />
+                                <Font name="System Bold" size="16.0" />
                             </font>
                             <graphic>
                                 <StackPane id="svgContainer">
@@ -39,9 +46,9 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="chat_btn" layoutX="18.0" layoutY="235.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="163.0" styleClass="main_side_button" text="CHAT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="chat_btn" layoutX="18.0" layoutY="235.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="163.0" styleClass="main_side_button" text="Chat" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
-                                <Font name="System Bold" size="14.0" />
+                                <Font name="System Bold" size="16.0" />
                             </font>
                             <graphic>
                                 <StackPane id="svgContainer">
@@ -49,9 +56,9 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                        <Button fx:id="page_3" layoutX="20.0" layoutY="271.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="163.0" styleClass="main_side_button" text="PAGE 3" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="page_3" layoutX="20.0" layoutY="271.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="163.0" styleClass="main_side_button" text="Page 3" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
-                                <Font name="System Bold" size="14.0" />
+                                <Font name="System Bold" size="16.0" />
                             </font>
                             <graphic>
                                 <StackPane id="svgContainer">
@@ -61,7 +68,7 @@
                         </Button>
                         <Button fx:id="logout_btn" layoutY="456.0" mnemonicParsing="false" onAction="#navigateToLoginRegister" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: transparent;" text="Logout" textFill="#0d9276" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
-                                <Font size="14.0" />
+                                <Font size="15.0" />
                             </font>
                             <graphic>
                                 <StackPane id="svgContainer">
@@ -69,9 +76,10 @@
                                 </StackPane>
                             </graphic>
                         </Button>
+                  <Line endX="100.0" layoutX="100.0" layoutY="188.0" startX="-100.0" stroke="#eeeeee" />
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="main_pane" GridPane.columnIndex="1" />
+                <AnchorPane fx:id="main_pane" visible="false" GridPane.columnIndex="1" />
             </children>
         </GridPane>
     </children>
