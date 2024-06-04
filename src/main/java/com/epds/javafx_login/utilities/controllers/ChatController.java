@@ -10,8 +10,10 @@ import com.epds.javafx_login.entities.User;
 import com.epds.javafx_login.ui.ChatMessageCellController;
 import com.epds.javafx_login.ui.ChatUserCellController;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import javafx.beans.value.ObservableMapValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -60,7 +62,7 @@ public class ChatController {
     private ChatApiService apiClient = ChatApiClient.getAPIClient().create(ChatApiService.class);
 
     // Temporary list of users for testing, TODO: add database of users and chat messages
-    private ObservableList<User> users = FXCollections.observableArrayList();
+    private final ObservableList<User> users = FXCollections.observableArrayList();
     private final HashMap<Integer, ObservableList<ChatMessage>> messages = new HashMap<>();
 
     @FXML
@@ -72,36 +74,34 @@ public class ChatController {
         user_list_view.setCellFactory(userListView -> new ChatUserListCell(userListView));
         chat_list_view.setCellFactory(chatMessageListView -> new ChatMessageListCell(chatMessageListView));
 
-        fillWithDummyData();
+        //fillWithDummyData();
+        fillWithDataFromAPI();
 
         showUsers();
-
     }
 
-    // Fill the users and messages with dummy data
-    private void fillWithDummyData() {
-        users = FXCollections.observableArrayList();
-//        addDummyUser(userId++, "Me, myself, and I");
-//        addDummyUser(userId++, "Somebody else");
-//        addDummyUser(userId++, "The 3rd Impact");
-//
-//        messages.get(0).add(new ChatMessage("Beginning of Chat"));
-//        messages.get(1).add(new ChatMessage("Hey, it's me"));
-//        messages.get(2).add(new ChatMessage("Who this????"));
-
+    // Fill the users and messages with API data
+    private void fillWithDataFromAPI() {
+        // Async method of getting tickets
+        // TODO: add a CompositeDisposable to prevent memory leaks
         apiClient.getTickets()
                 .observeOn(Schedulers.io())
+                .take(1)
                 .subscribe(
                         response -> {
                             if (response.isSuccessful()) {
                                 List<Ticket> tickets = response.body().getTickets();
-                                System.out.println(tickets);
-//                                users = FXCollections.observableArrayList();
+
+                                // Print each ticket into the console
                                 for (Ticket t : tickets) {
-                                    addDummyUser(t.getId()-1, t.getSender());
-                                    for (ChatItem ci : t.getConversation()) {
-                                        messages.get(t.getId()-1).add(new ChatMessage(ci.getMessage()));
-                                    }
+                                    System.out.println(t);
+
+                                    // Add each ticket as user and the conversation as chat messages
+                                    addDummyUser(t.getId() - 1, t.getSender());
+
+                                    // Add each ChatItem as a ChatMessage
+                                    for (ChatItem chatItem : t.getConversation())
+                                        messages.get(t.getId() - 1).add(new ChatMessage(chatItem.getMessage()));
                                 }
                             }
                         },
@@ -109,6 +109,17 @@ public class ChatController {
                             throw new RuntimeException(error);
                         }
                 );
+    }
+
+    // Fill the users and messages with dummy data
+    private void fillWithDummyData() {
+        addDummyUser(userId++, "Me, myself, and I");
+        addDummyUser(userId++, "Somebody else");
+        addDummyUser(userId++, "The 3rd Impact");
+
+        messages.get(0).add(new ChatMessage("Beginning of Chat"));
+        messages.get(1).add(new ChatMessage("Hey, it's me"));
+        messages.get(2).add(new ChatMessage("Who this????"));
     }
 
     @FXML
@@ -131,7 +142,7 @@ public class ChatController {
 
     @FXML
     private void showUsers() {
-        // Display the dummy data
+        // Display the users data
         user_list_view.setItems(users);
     }
 
