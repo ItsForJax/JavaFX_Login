@@ -2,10 +2,13 @@ package com.epds.javafx_login.utilities.controllers;
 
 import com.epds.javafx_login.api.chat.ChatApiClient;
 import com.epds.javafx_login.api.chat.ChatApiService;
+import com.epds.javafx_login.api.chat.model.Ticket;
+import com.epds.javafx_login.api.chat.model.TicketResponse;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.entities.User;
 import com.epds.javafx_login.ui.ChatMessageCellController;
 import com.epds.javafx_login.ui.ChatUserCellController;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,9 +17,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
+import retrofit2.Response;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 
 public class ChatController {
 
@@ -69,6 +74,22 @@ public class ChatController {
         fillWithDummyData();
 
         showUsers();
+        apiClient.getTickets()
+                .observeOn(Schedulers.io())
+                .subscribe(
+                        response -> {
+                            if (response.isSuccessful()) {
+                                List<Ticket> tickets = response.body().getTickets();
+
+                                for (Ticket t : tickets) {
+                                    System.out.println(t);
+                                }
+                            }
+                        },
+                        error -> {
+                            throw new RuntimeException(error);
+                        }
+                );
     }
 
     // Fill the users and messages with dummy data

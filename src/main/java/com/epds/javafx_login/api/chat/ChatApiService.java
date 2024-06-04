@@ -2,6 +2,7 @@ package com.epds.javafx_login.api.chat;
 
 import com.epds.javafx_login.api.chat.model.ChatItem;
 import com.epds.javafx_login.api.chat.model.Ticket;
+import com.epds.javafx_login.api.chat.model.TicketResponse;
 import com.epds.javafx_login.entities.User;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
@@ -25,5 +26,5 @@ public interface ChatApiService {
             @Body User receiver);
 
     @GET("/tickets")
-    Observable<Response<List<Ticket>>> getTickets();
+    Observable<Response<TicketResponse>> getTickets();
 }
