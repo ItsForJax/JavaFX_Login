@@ -19,5 +19,16 @@ public class ChatItem {
     private String sender_email;
 
     @SerializedName("timestamp")
-    private Date timestamp;
+    private String timestamp;
+
+    @Override
+    public String toString() {
+        return "ChatItem{" +
+                "is_support=" + is_support +
+                ", message_id=" + message_id +
+                ", message='" + message + '\'' +
+                ", sender_email='" + sender_email + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                "}";
+    }
 }

@@ -17,4 +17,14 @@ public class Ticket {
 
     @SerializedName("support")
     private String support_email;
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", chatItems=" + chatItems +
+                ", status='" + status + '\'' +
+                ", support_email='" + support_email + '\'' +
+                "}";
+    }
 }

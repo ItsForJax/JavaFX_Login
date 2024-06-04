@@ -18,4 +18,6 @@ module com.epds.javafx_login {
     opens com.epds.javafx_login.utilities.controllers to javafx.fxml;
     exports com.epds.javafx_login.ui;
     opens com.epds.javafx_login.ui to javafx.fxml;
+    exports com.epds.javafx_login.api.chat.model;
+    opens com.epds.javafx_login.api.chat.model to com.google.gson;
 }
