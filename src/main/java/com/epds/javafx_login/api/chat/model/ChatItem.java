@@ -14,6 +14,9 @@ public class ChatItem {
 
     @SerializedName("msg")
     private String message;
+    public String getMessage() {
+        return message;
+    }
 
     @SerializedName("sender")
     private String sender_email;

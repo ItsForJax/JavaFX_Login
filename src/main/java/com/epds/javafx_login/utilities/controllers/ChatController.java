@@ -2,6 +2,7 @@ package com.epds.javafx_login.utilities.controllers;
 
 import com.epds.javafx_login.api.chat.ChatApiClient;
 import com.epds.javafx_login.api.chat.ChatApiService;
+import com.epds.javafx_login.api.chat.model.ChatItem;
 import com.epds.javafx_login.api.chat.model.Ticket;
 import com.epds.javafx_login.api.chat.model.TicketResponse;
 import com.epds.javafx_login.entities.ChatMessage;
@@ -74,15 +75,33 @@ public class ChatController {
         fillWithDummyData();
 
         showUsers();
+
+    }
+
+    // Fill the users and messages with dummy data
+    private void fillWithDummyData() {
+        users = FXCollections.observableArrayList();
+//        addDummyUser(userId++, "Me, myself, and I");
+//        addDummyUser(userId++, "Somebody else");
+//        addDummyUser(userId++, "The 3rd Impact");
+//
+//        messages.get(0).add(new ChatMessage("Beginning of Chat"));
+//        messages.get(1).add(new ChatMessage("Hey, it's me"));
+//        messages.get(2).add(new ChatMessage("Who this????"));
+
         apiClient.getTickets()
                 .observeOn(Schedulers.io())
                 .subscribe(
                         response -> {
                             if (response.isSuccessful()) {
                                 List<Ticket> tickets = response.body().getTickets();
-
+                                System.out.println(tickets);
+//                                users = FXCollections.observableArrayList();
                                 for (Ticket t : tickets) {
-                                    System.out.println(t);
+                                    addDummyUser(t.getId()-1, t.getSender());
+                                    for (ChatItem ci : t.getConversation()) {
+                                        messages.get(t.getId()-1).add(new ChatMessage(ci.getMessage()));
+                                    }
                                 }
                             }
                         },
@@ -90,18 +109,6 @@ public class ChatController {
                             throw new RuntimeException(error);
                         }
                 );
-    }
-
-    // Fill the users and messages with dummy data
-    private void fillWithDummyData() {
-        users = FXCollections.observableArrayList();
-        addDummyUser(userId++, "Me, myself, and I");
-        addDummyUser(userId++, "Somebody else");
-        addDummyUser(userId++, "The 3rd Impact");
-
-        messages.get(0).add(new ChatMessage("Beginning of Chat"));
-        messages.get(1).add(new ChatMessage("Hey, it's me"));
-        messages.get(2).add(new ChatMessage("Who this????"));
     }
 
     @FXML
