@@ -47,8 +47,8 @@ public class ChatController {
     private TextField new_chat_user_text;
 
     // Variables
-    int userId = 0;
-    int currentId = -1;
+    int userId = 0;         // Stores a temporary user id for dummy data
+    int currentId = -1;     // Stores the id of the user selected to show the chat messages related to that user
 
     // API Handler
     private ChatApiService apiClient = ChatApiClient.getAPIClient().create(ChatApiService.class);
@@ -71,42 +71,39 @@ public class ChatController {
         showUsers();
     }
 
+    // Fill the users and messages with dummy data
     private void fillWithDummyData() {
-        users = FXCollections.observableArrayList(
-                new User(userId++, "Me, myself, and I"),
-                new User(userId++, "Somebody else"),
-                new User(userId++, "The 3rd Impact")
-        );
+        users = FXCollections.observableArrayList();
+        addDummyUser(userId++, "Me, myself, and I");
+        addDummyUser(userId++, "Somebody else");
+        addDummyUser(userId++, "The 3rd Impact");
 
-        ObservableList<ChatMessage> msgs = FXCollections.observableArrayList(
-                new ChatMessage("Beginning of Chat")
-        );
-        messages.put(0, msgs);
-
-        ObservableList<ChatMessage> msgs1 = FXCollections.observableArrayList(
-                new ChatMessage("Hey, it's me")
-        );
-        messages.put(1, msgs1);
-
-        ObservableList<ChatMessage> msgs2 = FXCollections.observableArrayList(
-                new ChatMessage("Who this????")
-        );
-        messages.put(2, msgs2);
+        messages.get(0).add(new ChatMessage("Beginning of Chat"));
+        messages.get(1).add(new ChatMessage("Hey, it's me"));
+        messages.get(2).add(new ChatMessage("Who this????"));
     }
 
     @FXML
     private void addNewChatUser() {
         String new_username = new_chat_user_text.getText();
+
         if (!new_username.isEmpty()) {
-            users.add(new User(userId, new_username));
-            messages.put(userId, FXCollections.observableArrayList());
+            addDummyUser(userId, new_username);
 
             userId += 1;
         }
     }
 
+    // Adds a new dummy user with a given id and username
+    @FXML
+    private void addDummyUser(int id, String name) {
+        users.add(new User(id, name));
+        messages.put(id, FXCollections.observableArrayList());
+    }
+
     @FXML
     private void showUsers() {
+        // Display the dummy data
         user_list_view.setItems(users);
     }
 
@@ -118,8 +115,10 @@ public class ChatController {
         chat_message_pane.setVisible(true);
         placeholder_pane.setVisible(false);
 
-        profile_user_name.setText(users.get(userId).getName());
-
+        // Get the username given the id and display it in the top bar chat pane
+        profile_user_name.setText(users.get(currentId).getName());
+        // Show the chat messages related to the currently selected user id
+        // todo: add a sender id since multiple people can chat with the same user
         chat_list_view.setItems(messages.get(currentId));
     }
 
@@ -134,7 +133,7 @@ public class ChatController {
         }
     }
 
-    // ListCells for displaying Users and Chat Messages
+    // ListCells for displaying a User
     private class ChatUserListCell extends ListCell<User> {
 
         private AnchorPane root;
@@ -186,6 +185,7 @@ public class ChatController {
         }
     }
 
+    // List Cell for displaying a ChatMessage
     private class ChatMessageListCell extends ListCell<ChatMessage> {
 
         private AnchorPane root;
@@ -201,8 +201,8 @@ public class ChatController {
             try {
                 final String CHAT_MESSAGE_CELL_FXML_PATH = "/com/epds/javafx_login/list_cells/chat_message_cell.fxml";
 
-                URL resource = getClass().getResource(CHAT_MESSAGE_CELL_FXML_PATH);
-                FXMLLoader loader = new FXMLLoader(resource);
+                URL fxml = getClass().getResource(CHAT_MESSAGE_CELL_FXML_PATH);
+                FXMLLoader loader = new FXMLLoader(fxml);
 
                 // Load the fxml file
                 root = loader.load();
