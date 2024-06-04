@@ -71,7 +71,7 @@
                         </Button>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="main_container" GridPane.columnIndex="1" />
+                <AnchorPane fx:id="main_pane" GridPane.columnIndex="1" />
             </children>
         </GridPane>
     </children>

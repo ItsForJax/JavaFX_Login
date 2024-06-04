@@ -26,7 +26,7 @@ public class MainController {
     private Button home_btn, chat_btn,
                     page_3, logout_btn;
     @FXML
-    public AnchorPane main_container;
+    public AnchorPane main_pane;
     @FXML
     private Text username;
     @FXML
