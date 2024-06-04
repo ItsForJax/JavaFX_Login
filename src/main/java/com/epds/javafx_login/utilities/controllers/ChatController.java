@@ -1,5 +1,7 @@
 package com.epds.javafx_login.utilities.controllers;
 
+import com.epds.javafx_login.api.chat.ChatApiClient;
+import com.epds.javafx_login.api.chat.ChatApiService;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.entities.User;
 import com.epds.javafx_login.ui.ChatMessageCellController;
@@ -18,6 +20,7 @@ import java.util.HashMap;
 
 public class ChatController {
 
+    // UI elements
     @FXML
     private ListView<User> user_list_view;
 
@@ -43,9 +46,12 @@ public class ChatController {
     @FXML
     private TextField new_chat_user_text;
 
-
+    // Variables
     int userId = 0;
     int currentId = -1;
+
+    // API Handler
+    private ChatApiService apiClient = ChatApiClient.getAPIClient().create(ChatApiService.class);
 
     // Temporary list of users for testing, TODO: add database of users and chat messages
     private ObservableList<User> users = FXCollections.observableArrayList();
