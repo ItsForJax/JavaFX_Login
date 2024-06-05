@@ -1,6 +1,6 @@
 package com.epds.javafx_login.ui;
 
-import com.epds.javafx_login.models.ChatMessage;
+import com.epds.javafx_login.entities.ChatMessage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
