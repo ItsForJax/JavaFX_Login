@@ -1,25 +1,27 @@
 package com.epds.javafx_login.utilities.controllers;
 
+import com.epds.javafx_login.Main;
 import com.epds.javafx_login.api.chat.ChatApiClient;
 import com.epds.javafx_login.api.chat.ChatApiService;
 import com.epds.javafx_login.api.chat.model.*;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.entities.User;
 import com.epds.javafx_login.ui.ChatMessageCellController;
+import com.epds.javafx_login.ui.ChatMessageCellFactory;
 import com.epds.javafx_login.ui.ChatUserCellController;
+import com.epds.javafx_login.ui.ChatUserCellFactory;
+import io.reactivex.rxjava3.disposables.Disposable;
 import com.epds.javafx_login.utilities.DataService;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import javafx.beans.value.ObservableMapValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
-import retrofit2.Response;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -72,10 +74,13 @@ public class ChatController {
     private void initialize() {
         send_chat_button.setOnAction(evt -> addChatMessage());
         new_chat_user_button.setOnAction(evt -> addNewChatUser());
-        chat_message_pane.setVisible(false);
 
-        user_list_view.setCellFactory(userListView -> new ChatUserListCell(userListView));
-        chat_list_view.setCellFactory(chatMessageListView -> new ChatMessageListCell(chatMessageListView));
+        // Hide the chat message pane and show the pane that asks to select a user
+        chat_message_pane.setVisible(false);
+        placeholder_pane.setVisible(true);
+
+        user_list_view.setCellFactory(new ChatUserCellFactory(id -> showChatMessages(id)));
+        chat_list_view.setCellFactory(new ChatMessageCellFactory());
 
         //fillWithDummyData();
         //fillWithDataFromAPI();
@@ -88,8 +93,7 @@ public class ChatController {
     // Fill the users and messages with API data
     private void fillWithDataFromAPI() {
         // Async method of getting tickets
-        // TODO: add a CompositeDisposable to prevent memory leaks
-        apiClient.getTickets()
+        Disposable d = apiClient.getTickets()
                 .observeOn(Schedulers.io())
                 .take(1)
                 .subscribe(
@@ -97,9 +101,9 @@ public class ChatController {
                             if (response.isSuccessful()) {
                                 List<Ticket> tickets = response.body().getTickets();
 
-                                // Print each ticket into the console
                                 for (Ticket t : tickets) {
-                                    System.out.println(t);
+                                    // Print each ticket into the console
+                                    //System.out.println(t);
 
                                     // Add each ticket as user and the conversation as chat messages
                                     addDummyUser(t.getId() - 1, t.getSender());
@@ -112,8 +116,14 @@ public class ChatController {
                         },
                         error -> {
                             throw new RuntimeException(error);
+                        },
+                        () -> {
+                            System.out.println("Done adding tickets");
                         }
                 );
+
+        // To prevent memory leak
+        Main.getCompositeDisposable().add(d);
     }
 
     // Fill the users and messages with dummy data
@@ -162,9 +172,11 @@ public class ChatController {
         placeholder_pane.setVisible(false);
 
         // Get the username given the id and display it in the top bar chat pane
+
         profile_user_name.setText(dataService.getUsers().get(currentId).getName());
         // Show the chat messages related to the currently selected user id
         chat_list_view.setItems(dataService.getChatMessages(currentId));
+
     }
 
     @FXML
@@ -172,7 +184,7 @@ public class ChatController {
         String text = chat_text.getText();
 
         if (!text.isEmpty()) {
-//            messages.get(currentId).add(new ChatMessage(text));
+            //messages.get(currentId).add(new ChatMessage(text));
 
             // Creating a new ticket
             Date ticketTimestamp = new Date();
@@ -186,7 +198,7 @@ public class ChatController {
                     false
             );
 
-            apiClient.sendMessage(String.valueOf(currentId + 1), messageRequest)
+            Disposable d = apiClient.sendMessage(String.valueOf(currentId + 1), messageRequest)
                     .subscribe(
                             response -> {
                                 if (response.isSuccessful()) {
@@ -201,102 +213,12 @@ public class ChatController {
                             }
                     );
 
+            // To prevent memory leak
+            Main.getCompositeDisposable().add(d);
+
             chat_text.setText("");
             chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
 
-        }
-    }
-
-    // ListCells for displaying a User
-    private class ChatUserListCell extends ListCell<User> {
-
-        private AnchorPane root;
-        private ChatUserCellController controller;
-        private ListView<User> parent;
-
-        public ChatUserListCell(ListView<User> parent) {
-            this.parent = parent;
-            // Adjusts the width of each cell based on its parent
-            prefWidthProperty().bind(parent.widthProperty().subtract(29));
-
-            try {
-                final String CHAT_USER_CELL_FXML_PATH = "/com/epds/javafx_login/list_cells/chat_user_cell.fxml";
-
-                URL fxml = getClass().getResource(CHAT_USER_CELL_FXML_PATH);
-                FXMLLoader loader = new FXMLLoader(fxml);
-
-                // Load the fxml file
-                root = loader.load();
-                controller = loader.getController();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        @Override
-        protected void updateItem(User user, boolean empty) {
-            super.updateItem(user, empty);
-
-            if (empty || user == null) {
-                setGraphic(null);
-            }
-            else {
-                // Adds a listener to this cell
-                setOnMouseClicked(mouseEvent -> showChatMessages(user.getId()));
-
-                controller.chat_user_name.setText(user.getName());
-                controller.chat_status.setFill(Paint.valueOf("red"));
-                try {
-                    URL resource = getClass().getResource("/com/epds/javafx_login/images/abstract.png");
-                    Image image = new Image(resource.toExternalForm());
-                    controller.chat_user_image.setImage(image);
-                } catch (Exception e) {
-                    System.out.println("Image not found");
-                }
-
-                setGraphic(root);
-            }
-        }
-    }
-
-    // List Cell for displaying a ChatMessage
-    private class ChatMessageListCell extends ListCell<ChatMessage> {
-
-        private AnchorPane root;
-        private ChatMessageCellController controller;
-        private ListView<ChatMessage> parent;
-
-        public ChatMessageListCell(ListView<ChatMessage> parent) {
-            this.parent = parent;
-            // Adjusts the width of each cell based on its parent, subtracting due to padding and scrollbar
-            // The number was guesstimated through trial and error
-            prefWidthProperty().bind(parent.widthProperty().subtract(29));
-
-            try {
-                final String CHAT_MESSAGE_CELL_FXML_PATH = "/com/epds/javafx_login/list_cells/chat_message_cell.fxml";
-
-                URL fxml = getClass().getResource(CHAT_MESSAGE_CELL_FXML_PATH);
-                FXMLLoader loader = new FXMLLoader(fxml);
-
-                // Load the fxml file
-                root = loader.load();
-                controller = loader.getController();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        @Override
-        protected void updateItem(ChatMessage message, boolean empty) {
-            super.updateItem(message, empty);
-
-            if (empty || message == null) {
-                setGraphic(null);
-            }
-            else {
-                controller.chat_message_text.setText(message.getMessage());
-                setGraphic(root);
-            }
         }
     }
 
