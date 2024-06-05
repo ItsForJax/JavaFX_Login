@@ -62,7 +62,7 @@ public class ChatUserCellFactory implements Callback<ListView<User>, ListCell<Us
             }
             else {
                 // Adds a listener to this cell
-                setOnMouseClicked(mouseEvent -> listener.invoke(user.getId()));
+                setOnMouseClicked(mouseEvent -> listener.call(user.getId()));
 
                 controller.chat_user_name.setText(user.getName());
                 controller.chat_status.setFill(Paint.valueOf("red"));
