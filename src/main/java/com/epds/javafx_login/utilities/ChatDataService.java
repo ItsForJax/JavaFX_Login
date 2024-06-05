@@ -4,31 +4,38 @@ import com.epds.javafx_login.api.chat.ChatApiClient;
 import com.epds.javafx_login.api.chat.ChatApiService;
 import com.epds.javafx_login.api.chat.model.ChatItem;
 import com.epds.javafx_login.api.chat.model.Ticket;
-import com.epds.javafx_login.entities.ChatMessage;
-import com.epds.javafx_login.entities.User;
+import com.epds.javafx_login.models.ChatMessage;
+import com.epds.javafx_login.models.User;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 
 import java.util.HashMap;
 
-public class DataService {
-    private static DataService instance;
+public class ChatDataService {
+
+    private static volatile ChatDataService INSTANCE = null;
+
     private final ObservableList<Ticket> fetchedTickets = FXCollections.observableArrayList();
     private final ObservableList<User> users = FXCollections.observableArrayList();
     private final HashMap<Integer, ObservableList<ChatMessage>> messages = new HashMap<>();
+
     private boolean dataFetched = false;
 
-    private DataService() {
+    private ChatDataService() {
         // Private constructor to enforce singleton pattern
     }
 
-    public static DataService getInstance() {
-        if (instance == null) {
-            instance = new DataService();
+    public static ChatDataService getInstance() {
+        if (INSTANCE == null) {
+            synchronized (ChatDataService.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new ChatDataService();
+                }
+            }
         }
-        return instance;
+
+        return INSTANCE;
     }
 
     public void fetchData() {

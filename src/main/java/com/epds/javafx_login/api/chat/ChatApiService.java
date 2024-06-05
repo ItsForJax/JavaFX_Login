@@ -1,16 +1,12 @@
 package com.epds.javafx_login.api.chat;
 
 import com.epds.javafx_login.api.chat.model.*;
-import com.epds.javafx_login.entities.User;
-import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-
-import java.util.List;
 
 public interface ChatApiService {
 
