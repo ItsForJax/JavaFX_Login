@@ -11,6 +11,7 @@ import com.epds.javafx_login.ui.ChatMessageCellFactory;
 import com.epds.javafx_login.ui.ChatUserCellController;
 import com.epds.javafx_login.ui.ChatUserCellFactory;
 import io.reactivex.rxjava3.disposables.Disposable;
+import com.epds.javafx_login.utilities.DataService;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,6 +63,9 @@ public class ChatController {
 
     // API Handler
     private final ChatApiService apiClient = ChatApiClient.getAPIClient().create(ChatApiService.class);
+    private ChatApiService apiClient = ChatApiClient.getAPIClient().create(ChatApiService.class);
+    //
+    private DataService dataService = DataService.getInstance();
 
     // Temporary list of users for testing, TODO: add database of users and chat messages
     private final ObservableList<User> users = FXCollections.observableArrayList();
@@ -80,7 +84,9 @@ public class ChatController {
         chat_list_view.setCellFactory(new ChatMessageCellFactory());
 
         //fillWithDummyData();
-        fillWithDataFromAPI();
+        //fillWithDataFromAPI();
+
+        dataService.fetchData();
 
         showUsers();
     }
@@ -153,7 +159,7 @@ public class ChatController {
     @FXML
     private void showUsers() {
         // Display the users data
-        user_list_view.setItems(users);
+        user_list_view.setItems(dataService.getUsers());
     }
 
     @FXML
@@ -167,12 +173,10 @@ public class ChatController {
         placeholder_pane.setVisible(false);
 
         // Get the username given the id and display it in the top bar chat pane
-        profile_user_name.setText(users.get(currentId).getName());
-
+        profile_user_name.setText(dataService.getUsers().get(currentId).getName());
         // Show the chat messages related to the currently selected user id
         // todo: add a sender id since multiple people can chat with the same user
-        chat_list_view.setItems(messages.get(currentId));
-        chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
+        chat_list_view.setItems(dataService.getChatMessages(currentId));
     }
 
     @FXML
