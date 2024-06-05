@@ -1,6 +1,6 @@
 package com.epds.javafx_login.ui;
 
-import com.epds.javafx_login.models.User;
+import com.epds.javafx_login.entities.User;
 import com.epds.javafx_login.ui.callbacks.ChatUserCellCallback;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;

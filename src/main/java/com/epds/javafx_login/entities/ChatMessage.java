@@ -1,4 +1,4 @@
-package com.epds.javafx_login.models;
+package com.epds.javafx_login.entities;
 
 public class ChatMessage {
 
