@@ -21,9 +21,6 @@ public class Main extends Application {
         stage.setTitle("Hello!");
         stage.setResizable(true);
 
-        // Removes the default header design
-        //stage.initStyle(StageStyle.UNDECORATED);
-
         DatabaseHelper.createUsersTable();
         DatabaseHelper.close();
 
