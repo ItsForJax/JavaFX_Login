@@ -148,7 +148,6 @@
 }
 
 .main_side_button:hover #svgIcon {
-
     -fx-stroke: #8EC3B0;
 }
 
@@ -169,34 +168,36 @@
     -fx-background-color: null;
     -fx-border-color: null;
     -fx-border-width: 0;
+    -fx-alignment: center-left;
 }
 
 /* Change the background color of the ListView */
 .list-view {
     -fx-background-color: #fafafa;
+      -fx-alignment: center-left;
 
 }
 
 .user_list_pane {
  -fx-border-color: #e3e3e3;
- -fx-border-width: 0 1 0 0;
+ -fx-border-width: 0 1 0 1;
 }
 
 #chat_list_view .list-cell {
-    -fx-background-color: white;
+    -fx-background-color:  #f2f2f2;
     -fx-border-width: 0;
-
 }
 
 /* Change the background color of the ListView cells */
 .list-cell {
     -fx-background-color: #fafafa;
     -fx-text-fill: 	#FFF;
+    -fx-alignment: center-left;
 }
 
 .list-cell:filled:selected, .list-cell:filled:selected:hover {
-    -fx-background-color: #86c8ba; /* Change this to your desired color */
-    -fx-text-fill: white; /* Change text color if needed */
+    -fx-background-color: #86c8ba;
+    -fx-text-fill: white;
 }
 
 #svgIcon_add {
@@ -208,6 +209,13 @@
 
 #svgIcon_search {
     -fx-fill: #fafafa;
+    -fx-stroke-linecap: round;
+    -fx-stroke-linejoin: round;
+    -fx-stroke-width: 1;
+}
+
+#svgIcon_resolve {
+    -fx-fill: #0D9276;
     -fx-stroke-linecap: round;
     -fx-stroke-linejoin: round;
     -fx-stroke-width: 1;
