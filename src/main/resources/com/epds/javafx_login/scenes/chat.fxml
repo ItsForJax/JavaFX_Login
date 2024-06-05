@@ -25,7 +25,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
+                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" style="-fx-background-color: #f2f2f2;" visible="false" GridPane.columnIndex="1">
                     <children>
                         <AnchorPane fx:id="user_details_pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
@@ -76,7 +76,7 @@
                         </Button>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="placeholder_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" visible="false" GridPane.columnIndex="1">
+                <AnchorPane fx:id="placeholder_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
                     <children>
                         <Label fx:id="empty_chat_placeholder" alignment="CENTER" layoutX="81.0" layoutY="198.0" prefHeight="55.0" prefWidth="238.0" text="Please select a User to chat with" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="198.0">
                             <font>
