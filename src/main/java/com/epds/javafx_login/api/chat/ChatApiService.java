@@ -14,15 +14,17 @@ import java.util.List;
 
 public interface ChatApiService {
 
-//    @GET("/api/chat_messages")
-//    Observable<ChatItem> getChatMessages(
-//            @Body User sender,
-//            @Body User receiver);
-//
-//    @POST("/api/add_new_conversation")
-//    Completable addNewConversation(
-//            @Body User sender,
-//            @Body User receiver);
+/*
+    @GET("/api/chat_messages")
+    Observable<ChatItem> getChatMessages(
+            @Body User sender,
+            @Body User receiver);
+
+    @POST("/api/add_new_conversation")
+    Completable addNewConversation(
+            @Body User sender,
+            @Body User receiver);
+*/
 
     @GET("/tickets")
     Observable<Response<TicketResponse>> getTickets();
@@ -32,6 +34,5 @@ public interface ChatApiService {
 
     @POST("/tickets/{ticketId}/message")
     Observable<Response<TicketResponse>> sendMessage(@Path("ticketId") String ticketId, @Body MessageRequest messageRequest);
-
 
 }
