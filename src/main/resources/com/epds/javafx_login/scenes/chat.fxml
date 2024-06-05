@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.ChatController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.ChatController">
     <children>
         <GridPane alignment="CENTER" layoutY="-1.0" prefHeight="401.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -17,21 +25,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" style="-fx-background-color: #fafafa;" visible="false" GridPane.columnIndex="1">
+                <ListView fx:id="user_list_view" prefHeight="401.0" prefWidth="204.0" style="-fx-background-color: #fafafa;" />
+                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" style="-fx-background-color: #f2f2f2;" visible="false" GridPane.columnIndex="1">
                     <children>
-                  <AnchorPane fx:id="user_details_pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                                <ImageView fx:id="profile_user_image" fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
+                        <AnchorPane fx:id="user_details_pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <ImageView fx:id="profile_user_image" fitHeight="34.0" fitWidth="36.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="6.0">
                                     <image>
-                                        <Image url="@images/profile.jpeg" />
+                                        <Image url="@../images/profile.png" />
                                     </image>
                                 </ImageView>
-                                <Label fx:id="profile_user_name" prefHeight="17.0" prefWidth="198.0" text="Users Name" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="0.0">
+                                <Label fx:id="profile_user_name" layoutX="48.0" layoutY="5.0" prefHeight="23.0" prefWidth="281.0" text="Users Name" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="5.0">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="profile_online_status" prefHeight="17.0" prefWidth="50.0" text="Online" textFill="#495057" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="20.0">
+                                <Label fx:id="profile_online_status" layoutX="48.0" layoutY="25.0" prefHeight="17.0" prefWidth="50.0" text="Online" textFill="#495057" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="25.0">
                                     <font>
                                         <Font size="11.0" />
                                     </font>
@@ -45,8 +54,8 @@
                                         </StackPane>
                                     </graphic>
                                 </Button>
-                     </children>
-                  </AnchorPane>
+                            </children>
+                        </AnchorPane>
                         <ListView fx:id="chat_list_view" layoutY="47.0" prefHeight="311.0" prefWidth="384.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
                         <Button fx:id="send_chat_button" layoutX="331.0" layoutY="357.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: null;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <graphic>
@@ -65,21 +74,33 @@
                         </Button>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="placeholder_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" GridPane.columnIndex="1">
+                <AnchorPane fx:id="placeholder_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
                     <children>
-                        <Label fx:id="empty_chat_placeholder" alignment="CENTER" layoutX="78.0" prefHeight="400.0" prefWidth="243.0" text="Please select a User to chat with" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="empty_chat_placeholder" alignment="CENTER" layoutX="81.0" layoutY="198.0" prefHeight="55.0" prefWidth="238.0" text="Please select a User to chat with" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="198.0">
                             <font>
-                                <Font name="Trebuchet MS Bold Italic" size="23.0" />
-                            </font></Label>
+                                <Font name="Trebuchet MS Bold Italic" size="15.0" />
+                            </font>
+                        </Label>
+                  <ImageView fitHeight="102.0" fitWidth="120.0" layoutX="146.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="174.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="145.61685943603516" AnchorPane.topAnchor="124.0">
+                     <image>
+                        <Image url="@../images/message_image.png" />
+                     </image>
+                  </ImageView>
                     </children>
                 </AnchorPane>
-            <AnchorPane fx:id="chat_user_pane" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                      <ListView fx:id="user_list_view" prefHeight="401.0" prefWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
-                  <Button fx:id="new_chat_user_button" layoutX="140.0" layoutY="2.0" mnemonicParsing="false" text="+" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0" />
-                  <TextField fx:id="new_chat_user_text" layoutY="4.0" promptText="Add a new user..." AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="4.0" />
-               </children>
-            </AnchorPane>
+                <AnchorPane fx:id="chat_user_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" styleClass="user_list_pane">
+                    <children>
+                        <ListView fx:id="user_list_view" layoutY="46.0" prefHeight="354.0" prefWidth="201.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="46.0" />
+                        <Button fx:id="new_chat_user_button" layoutX="166.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: null;" wrapText="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+                            <graphic>
+                                <StackPane id="" prefHeight="5.0" prefWidth="0.0">
+                                    <SVGPath id="svgIcon_add" content="M18 11h-2q-.425 0-.712-.288T15 10t.288-.712T16 9h2V7q0-.425.288-.712T19 6t.713.288T20 7v2h2q.425 0 .713.288T23 10t-.288.713T22 11h-2v2q0 .425-.288.713T19 14t-.712-.288T18 13zm-9 1q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m-8 6v-.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2v.8q0 .825-.587 1.413T15 20H3q-.825 0-1.412-.587T1 18" />
+                                </StackPane>
+                            </graphic>
+                        </Button>
+                        <TextField fx:id="new_chat_user_text" layoutX="8.0" layoutY="12.0" prefHeight="29.0" prefWidth="154.0" promptText="Add a new user..." AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="12.0" />
+                    </children>
+                </AnchorPane>
             </children>
         </GridPane>
     </children>
