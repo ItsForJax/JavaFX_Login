@@ -9,6 +9,7 @@ module com.epds.javafx_login {
     requires io.reactivex.rxjava3;
     requires okhttp3;
     requires com.google.gson;
+    requires ormlite.jdbc;
 
     exports com.epds.javafx_login;
     opens com.epds.javafx_login to javafx.fxml;
