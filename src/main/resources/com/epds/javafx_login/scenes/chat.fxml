@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.ChatController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.ChatController">
     <children>
         <GridPane alignment="CENTER" layoutY="-1.0" prefHeight="401.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -21,29 +29,32 @@
                     <children>
                         <AnchorPane fx:id="user_details_pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <ImageView fx:id="profile_user_image" fitHeight="34.0" fitWidth="36.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="6.0">
+                                <ImageView fx:id="profile_user_image" fitHeight="34.0" fitWidth="42.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="6.0">
                                     <image>
                                         <Image url="@../images/IIMS.png" />
                                     </image>
                                 </ImageView>
-                                <Label fx:id="profile_user_name" layoutX="48.0" layoutY="5.0" prefHeight="23.0" prefWidth="281.0" text="Users Name" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="5.0">
+                                <Label fx:id="profile_user_name" layoutX="55.0" layoutY="5.0" prefHeight="23.0" prefWidth="238.0" text="Users Name" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="5.0">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="profile_online_status" layoutX="48.0" layoutY="25.0" prefHeight="17.0" prefWidth="50.0" text="Online" textFill="#495057" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="25.0">
+                                <Label fx:id="profile_online_status" layoutX="56.0" layoutY="23.0" prefHeight="17.0" prefWidth="50.0" text="Online" textFill="#495057" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="23.0">
                                     <font>
                                         <Font size="11.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="profile_delete_button" mnemonicParsing="false" prefHeight="34.0" prefWidth="30.0" style="-fx-background-color: null;" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                                <Button fx:id="message_resolve_button" layoutX="304.0" layoutY="8.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="90.0" style="-fx-background-color: null; -fx-border-color: #0D9276; -fx-border-radius: 3;" text="Resolved" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="8.0">
                                     <graphic>
-                                        <StackPane>
+                                        <StackPane prefHeight="29.0" prefWidth="30.0">
                                             <children>
-                                                <SVGPath id="svgIcon_send" content="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3zM14 5h-3l-1-1H6L5 5H2v2h12z" />
+                                                <SVGPath id="svgIcon_resolve" content="m13.087 21.388l.542-.916c.42-.71.63-1.066.968-1.262c.338-.197.763-.204 1.613-.219c1.256-.021 2.043-.098 2.703-.372a5 5 0 0 0 2.706-2.706C22 14.995 22 13.83 22 11.5v-1c0-3.273 0-4.91-.737-6.112a5 5 0 0 0-1.65-1.651C18.41 2 16.773 2 13.5 2h-3c-3.273 0-4.91 0-6.112.737a5 5 0 0 0-1.651 1.65C2 5.59 2 7.228 2 10.5v1c0 2.33 0 3.495.38 4.413a5 5 0 0 0 2.707 2.706c.66.274 1.447.35 2.703.372c.85.015 1.275.022 1.613.219c.337.196.548.551.968 1.262l.542.916c.483.816 1.69.816 2.174 0M15.53 8.47a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 0 1-1.05.011l-2-1.92a.75.75 0 1 1 1.04-1.082l1.47 1.411l3.48-3.48a.75.75 0 0 1 1.06 0" />
                                             </children>
                                         </StackPane>
                                     </graphic>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
                                 </Button>
                             </children>
                         </AnchorPane>
