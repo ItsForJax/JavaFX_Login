@@ -29,7 +29,7 @@
                   </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Circle fx:id="chat_status" fill="green" radius="5.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle fx:id="chat_status" fill="#48bf53" radius="5.0" stroke="#48bf53" strokeType="INSIDE" strokeWidth="0.0">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
