@@ -168,9 +168,11 @@ public class ChatController {
 
         // Get the username given the id and display it in the top bar chat pane
         profile_user_name.setText(users.get(currentId).getName());
+
         // Show the chat messages related to the currently selected user id
         // todo: add a sender id since multiple people can chat with the same user
         chat_list_view.setItems(messages.get(currentId));
+        chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
     }
 
     @FXML
