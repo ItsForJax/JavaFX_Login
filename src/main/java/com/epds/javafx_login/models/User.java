@@ -1,4 +1,4 @@
-package com.epds.javafx_login.entities;
+package com.epds.javafx_login.models;
 
 public class User {
 
