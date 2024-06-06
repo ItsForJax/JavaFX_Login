@@ -22,5 +22,6 @@ module com.epds.javafx_login {
     exports com.epds.javafx_login.api.chat.model;
     opens com.epds.javafx_login.api.chat.model to com.google.gson;
     exports com.epds.javafx_login.entities;
+    opens com.epds.javafx_login.entities to ormlite.jdbc;
     exports com.epds.javafx_login.ui.callbacks;
 }

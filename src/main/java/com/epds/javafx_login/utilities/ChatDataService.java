@@ -1,11 +1,13 @@
 package com.epds.javafx_login.utilities;
 
+import com.epds.javafx_login.Main;
 import com.epds.javafx_login.api.chat.ChatApiClient;
 import com.epds.javafx_login.api.chat.ChatApiService;
 import com.epds.javafx_login.api.chat.model.ChatItem;
 import com.epds.javafx_login.api.chat.model.Ticket;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.entities.User;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,7 +43,7 @@ public class ChatDataService {
     public void fetchData() {
         if (!dataFetched) {
             ChatApiService apiClient = ChatApiClient.getAPIClient().create(ChatApiService.class);
-            apiClient.getTickets()
+            Disposable d = apiClient.getTickets()
                     .observeOn(Schedulers.io())
                     .take(1)
                     .subscribe(
@@ -56,6 +58,9 @@ public class ChatDataService {
                                 throw new RuntimeException(error);
                             }
                     );
+
+            // To prevent memory leaks
+            Main.getCompositeDisposable().add(d);
         }
     }
 
