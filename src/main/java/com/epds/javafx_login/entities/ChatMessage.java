@@ -12,6 +12,7 @@ public class ChatMessage {
 
     @DatabaseField(id = true, columnName = ID_FIELD_NAME)
     private long id;
+
     @DatabaseField(columnName = MESSAGE_FIELD_NAME, canBeNull = false)
     private String message;
 

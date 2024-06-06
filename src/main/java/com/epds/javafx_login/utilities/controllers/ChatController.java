@@ -55,7 +55,6 @@ public class ChatController {
     int currentId = -1;     // Stores the id of the user selected to show the chat messages related to that user
 
     // API Handler
-    private final ChatApiService apiClient = ChatApiClient.getAPIClient().create(ChatApiService.class);
     private final ChatDataService dataService = ChatDataService.getInstance();
 
     // Temporary list of users for testing, TODO: add database of users and chat messages
@@ -71,50 +70,17 @@ public class ChatController {
         chat_message_pane.setVisible(false);
         placeholder_pane.setVisible(true);
 
-        user_list_view.setCellFactory(new ChatUserCellFactory(id -> showChatMessages(id)));
+        user_list_view.setCellFactory(new ChatUserCellFactory(id -> {
+            showChatMessages(id);
+            //showDummyChatMessages(id);
+        }));
         chat_list_view.setCellFactory(new ChatMessageCellFactory());
 
         //fillWithDummyData();
-        //fillWithDataFromAPI();
-
         dataService.fetchData();
 
+        //showDummyUsers();
         showUsers();
-    }
-
-    // Fill the users and messages with API data
-    private void fillWithDataFromAPI() {
-        // Async method of getting tickets
-        Disposable d = apiClient.getTickets()
-                .observeOn(Schedulers.io())
-                .subscribe(
-                        response -> {
-                            if (response.isSuccessful()) {
-                                List<Ticket> tickets = response.body().getTickets();
-
-                                for (Ticket t : tickets) {
-                                    // Print each ticket into the console
-                                    //System.out.println(t);
-
-                                    // Add each ticket as user and the conversation as chat messages
-                                    addDummyUser(t.getId() - 1, t.getSender());
-
-                                    // Add each ChatItem as a ChatMessage
-                                    for (ChatItem chatItem : t.getConversation())
-                                        messages.get(t.getId() - 1).add(new ChatMessage(chatItem.getMessage()));
-                                }
-                            }
-                        },
-                        error -> {
-                            throw new RuntimeException(error);
-                        },
-                        () -> {
-                            System.out.println("Done adding tickets");
-                        }
-                );
-
-        // To prevent memory leak
-        Main.getCompositeDisposable().add(d);
     }
 
     // Fill the users and messages with dummy data
@@ -174,42 +140,52 @@ public class ChatController {
         String text = chat_text.getText();
 
         if (!text.isEmpty()) {
-            //messages.get(currentId).add(new ChatMessage(text));
+                Disposable d = dataService.addChatMessage(text)
+                        .observeOn(Schedulers.single())
+                        .subscribeOn(Schedulers.io())
+                        .subscribe(
+                                response -> {
+                                    if (response.isSuccessful()) {
+                                        chat_text.setText("");
+                                        chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
 
-            // Creating a new ticket
-            Date ticketTimestamp = new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            String formattedTicketTimestamp = dateFormat.format(ticketTimestamp);
-
-            MessageRequest messageRequest = new MessageRequest(
-                    formattedTicketTimestamp,
-                    "user123",
-                    text,
-                    false
-            );
-
-            Disposable d = apiClient.sendMessage(String.valueOf(currentId + 1), messageRequest)
-                    .subscribe(
-                            response -> {
-                                if (response.isSuccessful()) {
-                                    TicketResponse updatedTicket = response.body();
-                                    // Handle the updated ticket
-                                } else {
+                                        TicketResponse updatedTicket = response.body();
+                                        // Handle the updated ticket
+                                    } else {
+                                        // Handle the error
+                                    }
+                                },
+                                error -> {
                                     // Handle the error
                                 }
-                            },
-                            error -> {
-                                // Handle the error
-                            }
-                    );
+                        );
 
             // To prevent memory leak
             Main.getCompositeDisposable().add(d);
-
-            chat_text.setText("");
-            chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
-
         }
+    }
+
+
+    // For testing purposes
+
+    @FXML
+    private void showDummyUsers() {
+        user_list_view.setItems(users);
+    }
+
+    @FXML
+    private void showDummyChatMessages(int id) {
+        this.currentId = id;
+
+        // Show the chat pane and hide the placeholder text about selecting a user
+        chat_message_pane.setVisible(true);
+        placeholder_pane.setVisible(false);
+
+        // Get the username given the id and display it in the top bar chat pane
+        profile_user_name.setText(users.get(currentId).getName());
+        // Show the chat messages related to the currently selected user id and automatically scroll to bottom
+        chat_list_view.setItems(messages.get(currentId));
+        chat_list_view.scrollTo(chat_list_view.getItems().size() - 1);
     }
 
 }
