@@ -2,23 +2,42 @@ package com.epds.javafx_login.database.chat;
 
 import com.epds.javafx_login.database.IRepository;
 import com.epds.javafx_login.entities.ChatMessage;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
+import io.reactivex.rxjava3.core.Single;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class ChatMessageRepository implements IRepository<ChatMessage> {
 
-    private Dao<ChatMessage, Integer> chatDao;
+    // Make this class a singleton
+    private static volatile ChatMessageRepository INSTANCE = null;
+    private final ChatMessageDao_Impl chatDao;
 
-    public ChatMessageRepository(ConnectionSource connectionSource) throws SQLException {
-        chatDao = DaoManager.createDao(connectionSource, ChatMessage.class);
+    private ChatMessageRepository(ConnectionSource connectionSource) throws SQLException {
+        chatDao = new ChatMessageDao_Impl(connectionSource);
+    }
+
+    public static void initialize(ConnectionSource connectionSource) throws SQLException {
+        if (INSTANCE == null) {
+            synchronized (ChatMessageRepository.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new ChatMessageRepository(connectionSource);
+                }
+            }
+        }
+    }
+
+    public static ChatMessageRepository getInstance() {
+        if (INSTANCE == null) {
+            throw new IllegalStateException("ChatMessageRepository must be initialized!");
+        }
+
+        return INSTANCE;
     }
 
     @Override
-    public ChatMessage findById(int id) {
+    public Single<ChatMessage> findById(int id) {
         try {
             return chatDao.queryForId(id);
         } catch (SQLException e) {
@@ -27,7 +46,7 @@ public class ChatMessageRepository implements IRepository<ChatMessage> {
     }
 
     @Override
-    public List<ChatMessage> getAll() {
+    public Single<List<ChatMessage>> getAll() {
         try {
             return chatDao.queryForAll();
         } catch (SQLException e) {
@@ -36,27 +55,27 @@ public class ChatMessageRepository implements IRepository<ChatMessage> {
     }
 
     @Override
-    public boolean create(ChatMessage entity) {
+    public Single<Integer> create(ChatMessage entity) {
         try {
-            return chatDao.create(entity) > 0;
+            return chatDao.create(entity);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public boolean update(ChatMessage entity) {
+    public Single<Integer> update(ChatMessage entity) {
         try {
-            return chatDao.update(entity) > 0;
+            return chatDao.update(entity);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public boolean delete(ChatMessage entity) {
+    public Single<Integer> delete(ChatMessage entity) {
         try {
-            return chatDao.delete(entity) > 0;
+            return chatDao.delete(entity);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
