@@ -1,14 +1,16 @@
 package com.epds.javafx_login;
 
+import com.epds.javafx_login.database.DatabaseManager;
+import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.utilities.DatabaseHelper;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Main extends Application {
 
@@ -23,6 +25,14 @@ public class Main extends Application {
 
         DatabaseHelper.createUsersTable();
         DatabaseHelper.close();
+
+        // Create a table of ChatMessages
+        try {
+            DatabaseManager db = new DatabaseManager();
+            db.createTablesIfNotExists(ChatMessage.class);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         stage.setScene(scene);
         stage.show();

@@ -87,7 +87,6 @@ public class ChatController {
         // Async method of getting tickets
         Disposable d = apiClient.getTickets()
                 .observeOn(Schedulers.io())
-                .take(1)
                 .subscribe(
                         response -> {
                             if (response.isSuccessful()) {
