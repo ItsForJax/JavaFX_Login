@@ -7,9 +7,10 @@ import com.j256.ormlite.table.DatabaseTable;
 public class ChatMessage {
 
     // For QueryBuilder to find the names
+    public static final String ID_FIELD_NAME = "id";
     public static final String MESSAGE_FIELD_NAME = "message";
 
-    @DatabaseField(id = true)
+    @DatabaseField(id = true, columnName = ID_FIELD_NAME)
     private long id;
     @DatabaseField(columnName = MESSAGE_FIELD_NAME, canBeNull = false)
     private String message;

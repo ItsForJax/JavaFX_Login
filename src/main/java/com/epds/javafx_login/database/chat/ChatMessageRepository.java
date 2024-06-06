@@ -2,10 +2,7 @@ package com.epds.javafx_login.database.chat;
 
 import com.epds.javafx_login.database.IRepository;
 import com.epds.javafx_login.entities.ChatMessage;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
-import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 
 import java.sql.SQLException;
@@ -15,10 +12,10 @@ public class ChatMessageRepository implements IRepository<ChatMessage> {
 
     // Make this class a singleton
     private static volatile ChatMessageRepository INSTANCE = null;
-    private final ChatMessageDaoImpl chatDao;
+    private final ChatMessageDao_Impl chatDao;
 
     private ChatMessageRepository(ConnectionSource connectionSource) throws SQLException {
-        chatDao = new ChatMessageDaoImpl(connectionSource);
+        chatDao = new ChatMessageDao_Impl(connectionSource);
     }
 
     public static void initialize(ConnectionSource connectionSource) throws SQLException {
