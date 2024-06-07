@@ -167,7 +167,6 @@ public class ChatController {
 
 
     // For testing purposes
-
     @FXML
     private void showDummyUsers() {
         user_list_view.setItems(users);
