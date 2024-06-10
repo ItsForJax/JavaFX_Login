@@ -76,11 +76,11 @@ public class ChatController {
         }));
         chat_list_view.setCellFactory(new ChatMessageCellFactory());
 
-        //fillWithDummyData();
         dataService.fetchData();
-
-        //showDummyUsers();
         showUsers();
+
+        //fillWithDummyData();
+        //showDummyUsers();
     }
 
     // Fill the users and messages with dummy data
