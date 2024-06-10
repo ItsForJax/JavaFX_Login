@@ -1,8 +1,6 @@
 package com.epds.javafx_login.utilities.controllers;
 
 import com.epds.javafx_login.Main;
-import com.epds.javafx_login.api.chat.ChatApiClient;
-import com.epds.javafx_login.api.chat.ChatApiService;
 import com.epds.javafx_login.api.chat.model.*;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.entities.User;
@@ -17,10 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 public class ChatController {
 
