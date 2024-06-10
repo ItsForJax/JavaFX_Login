@@ -30,8 +30,8 @@ public class Main extends Application {
         DatabaseHelper.createUsersTable();
         DatabaseHelper.close();
 
-        // Disable Logging
-        LoggerFactory.setLogBackendFactory(LogBackendType.NULL);
+        // Use local for logging
+        LoggerFactory.setLogBackendFactory(LogBackendType.LOCAL);
 
         // Create a table of ChatMessages
         try {
