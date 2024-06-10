@@ -10,7 +10,6 @@
 }
 
 #login_vbox {
-    /* -fx-border-color: #cccccc; */
     -fx-border-radius: 15;
     -fx-background-color: white;
     -fx-background-radius: 15;
@@ -94,10 +93,9 @@
 .main_side_button {
     -fx-background-color: transparent;
     -fx-border-width: 2px;
-    -fx-text-fill: 	#0D9276;
+    -fx-text-fill: 	#666666;
     -fx-alignment: center-left;
     -fx-padding: 0 0 0 30;
-
 }
 
 .main_side_button:pressed, .main_side_button:focused  {
@@ -127,7 +125,7 @@
 
 #svgIcon {
     -fx-fill: white; /* Sets the fill color of the SVG icon */
-    -fx-stroke: #0D9276; /* Matches the stroke color to the current text color */
+    -fx-stroke: #666666; /* Matches the stroke color to the current text color */
     -fx-stroke-linecap: round; /* Sets the stroke line cap to round */
     -fx-stroke-linejoin: round; /* Sets the stroke line join to round */
     -fx-stroke-width: 2; /* Sets the stroke width */
@@ -145,6 +143,18 @@
     -fx-stroke-linecap: round;
     -fx-stroke-linejoin: round;
     -fx-stroke-width: 1;
+}
+
+#svgIcon_arrow {
+     -fx-fill: white; /* Sets the fill color of the SVG icon */
+        -fx-stroke: #0D9276; /* Matches the stroke color to the current text color */
+        -fx-stroke-linecap: round; /* Sets the stroke line cap to round */
+        -fx-stroke-linejoin: round; /* Sets the stroke line join to round */
+        -fx-stroke-width: 2; /* Sets the stroke width */
+}
+
+#svgContainer_arrow {
+    -fx-padding: 0 0 0 40; /* Adds a right margin of 10 pixels */
 }
 
 .main_side_button:hover #svgIcon {
@@ -236,6 +246,19 @@
    -fx-background-color: #0D9276;
    -fx-background-radius: 0 3 3 0;
 
+}
+
+
+
+/* Style for the TableView headers HOME CSS */
+.table-view .column-header-background {
+    -fx-background-color: #86c8ba;
+}
+
+.table-view .column-header {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-alignment: CENTER;
 }
 
 

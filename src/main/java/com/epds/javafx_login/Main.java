@@ -43,6 +43,7 @@ public class Main extends Application {
             throw new RuntimeException(e);
         }
 
+
         stage.setScene(scene);
         stage.show();
     }
