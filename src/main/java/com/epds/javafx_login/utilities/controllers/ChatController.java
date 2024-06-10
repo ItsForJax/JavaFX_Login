@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,7 +41,7 @@ public class ChatController {
     @FXML
     private AnchorPane chat_message_pane;
     @FXML
-    private AnchorPane placeholder_pane;
+    private GridPane placeholder_pane;
 
     @FXML
     private Label profile_user_name;
