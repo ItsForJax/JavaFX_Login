@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #F2F2F2;;" stylesheets="@stylesheet.css"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Text layoutX="29.0" layoutY="38.169921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Page 3"
+        <Text layoutX="29.0" layoutY="38.169921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello"
               wrappingWidth="135.5234375" AnchorPane.bottomAnchor="457.0" AnchorPane.leftAnchor="29.0"
               AnchorPane.rightAnchor="466.0" AnchorPane.topAnchor="14.0">
             <font>
