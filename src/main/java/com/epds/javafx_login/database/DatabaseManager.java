@@ -19,9 +19,13 @@ public class DatabaseManager {
         return connectionSource;
     }
 
-    public void close() throws Exception {
-        if (connectionSource != null) {
-            connectionSource.close();
+    public void close() {
+        try {
+            if (connectionSource != null) {
+                connectionSource.close();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
