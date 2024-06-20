@@ -4,6 +4,8 @@ import com.epds.javafx_login.database.DatabaseManager;
 import com.epds.javafx_login.database.chat.ChatMessageRepository;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.utilities.DatabaseHelper;
+import com.j256.ormlite.logger.LogBackendType;
+import com.j256.ormlite.logger.LoggerFactory;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +29,9 @@ public class Main extends Application {
 
         DatabaseHelper.createUsersTable();
         DatabaseHelper.close();
+
+        // Use local for logging
+        LoggerFactory.setLogBackendFactory(LogBackendType.LOCAL);
 
         // Create a table of ChatMessages
         try {

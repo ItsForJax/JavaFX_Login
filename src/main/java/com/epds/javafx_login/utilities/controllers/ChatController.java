@@ -1,8 +1,6 @@
 package com.epds.javafx_login.utilities.controllers;
 
 import com.epds.javafx_login.Main;
-import com.epds.javafx_login.api.chat.ChatApiClient;
-import com.epds.javafx_login.api.chat.ChatApiService;
 import com.epds.javafx_login.api.chat.model.*;
 import com.epds.javafx_login.entities.ChatMessage;
 import com.epds.javafx_login.entities.User;
@@ -18,10 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 public class ChatController {
 
@@ -77,11 +72,11 @@ public class ChatController {
         }));
         chat_list_view.setCellFactory(new ChatMessageCellFactory());
 
-        //fillWithDummyData();
         dataService.fetchData();
-
-        //showDummyUsers();
         showUsers();
+
+        //fillWithDummyData();
+        //showDummyUsers();
     }
 
     // Fill the users and messages with dummy data
@@ -168,7 +163,6 @@ public class ChatController {
 
 
     // For testing purposes
-
     @FXML
     private void showDummyUsers() {
         user_list_view.setItems(users);

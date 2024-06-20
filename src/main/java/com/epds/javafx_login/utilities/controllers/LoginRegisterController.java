@@ -67,10 +67,6 @@ public class LoginRegisterController {
     private boolean isRegisterPasswordVisible = false;
     private boolean isRegisterConfirmPasswordVisible = false;
 
-    public MainController mainController;
-    private Parent root;
-
-
     private void borderSetter(TextInputControl input, HBox hBox){
         input.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -108,10 +104,6 @@ public class LoginRegisterController {
 
         borderSetter(register_pass_visible,register_pass_hbox);
         borderSetter(register_pass,register_pass_hbox);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
-        root = loader.load();
-        mainController = loader.getController();
 
         loginPasswordToggle.setOnMouseClicked(event -> {
             isLoginPasswordVisible = togglePasswordVisibility(
