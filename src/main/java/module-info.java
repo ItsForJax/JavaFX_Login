@@ -10,6 +10,7 @@ module com.epds.javafx_login {
     requires okhttp3;
     requires com.google.gson;
     requires ormlite.jdbc;
+    requires java.prefs;
 
     exports com.epds.javafx_login;
     opens com.epds.javafx_login to javafx.fxml;

@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.prefs.Preferences;
 
 public class LoginRegisterController {
 
@@ -31,6 +32,8 @@ public class LoginRegisterController {
     public HBox register_pass_hbox;
     @FXML
     public HBox confirm_register_pass_hbox;
+    @FXML
+    public CheckBox remember_me_toggle;
     @FXML
     private TextField login_username;
     @FXML
@@ -57,6 +60,8 @@ public class LoginRegisterController {
     private Button login_btn, go_to_register_btn,
                     register_btn, go_to_login_btn;
 
+    Preferences preferences;
+
     @FXML
     private boolean isLoginPasswordVisible = false;
     private boolean isRegisterPasswordVisible = false;
@@ -78,6 +83,18 @@ public class LoginRegisterController {
         go_to_register_btn.setOnAction(event -> gotoRegister());
         register_btn.setOnAction(event -> register());
         go_to_login_btn.setOnAction(event -> gotoLogin());
+
+
+        preferences = Preferences.userNodeForPackage(LoginRegisterController.class);
+        // Load saved username and password if remember me was checked
+        if (preferences.getBoolean("rememberMe", false)) {
+            String savedUsername = preferences.get("username", "");
+            String savedPassword = preferences.get("password", "");
+            login_username.setText(savedUsername);
+            login_password.setText(savedPassword);
+            login_password_visible.setText(savedPassword);
+            remember_me_toggle.setSelected(true);
+        }
 
         borderSetter(login_password, login_pass_hbox);
         borderSetter(login_password_visible,login_pass_hbox);
@@ -177,11 +194,19 @@ public class LoginRegisterController {
 
         Alert alert;
         if (DatabaseHelper.loginUser(username, password)) {
-            // TODO: fix bug where MainController gets loaded in memory before logging in
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
-            MainController mainController = loader.getController();
+            if (remember_me_toggle.isSelected()) {
+                // Save username and password in preferences
+                preferences.put("username", username);
+                preferences.put("password", password);
+                preferences.putBoolean("rememberMe", true);
+            } else {
+                // Clear saved preferences
+                preferences.remove("username");
+                preferences.remove("password");
+                preferences.putBoolean("rememberMe", false);
+            }
 
-            if (!DatabaseHelper.isNewUser(username)){
+            if (!DatabaseHelper.isNewUser(username)) {
                 mainController.MainApplication(event, username);
             } else {
                 mainController.UserInfo(event, username, password);
@@ -190,8 +215,6 @@ public class LoginRegisterController {
             alert.setTitle("Login Successful");
             alert.setHeaderText(null);
             alert.setContentText("Welcome!");
-
-
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login Failed");
@@ -201,6 +224,7 @@ public class LoginRegisterController {
         alert.showAndWait();
         DatabaseHelper.close();
     }
+
 
     @FXML
     protected void register() {
