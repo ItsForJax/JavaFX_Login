@@ -34,26 +34,13 @@ public class MainController {
 
     private Stage stage;
     private Scene scene;
+    private Parent root;
 
     private static final String USERINFO_FXML_PATH = "/com/epds/javafx_login/scenes/user-details.fxml";
     private static final String MAIN_FXML_PATH = "/com/epds/javafx_login/scenes/main.fxml";
     private static final String LOGIN_REGISTER_FXML_PATH = "/com/epds/javafx_login/scenes/login-register.fxml";
 
     private final Map<String, Node> scenes = new HashMap<>();
-
-    @FXML
-    public void initialize() {
-        loadAllScenes();
-
-        home_btn.setOnAction(event -> setScene("home"));
-        chat_btn.setOnAction(event -> setScene("chat"));
-        page_3.setOnAction(event -> setScene("page3"));
-
-        logout_btn.setOnAction(this::navigateToLoginRegister);
-
-        //Initial scene
-        setScene("home");
-    }
 
     private void loadAllScenes() {
         try {
@@ -90,7 +77,7 @@ public class MainController {
     public void MainApplication(ActionEvent event, String user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_FXML_PATH));
-            Parent root = loader.load();
+            root = loader.load();
             MainController mainController = loader.getController();
             mainController.setUserName(user);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -104,10 +91,24 @@ public class MainController {
     }
 
     @FXML
+    public void initialize() {
+        loadAllScenes();
+
+        home_btn.setOnAction(event -> setScene("home"));
+        chat_btn.setOnAction(event -> setScene("chat"));
+        page_3.setOnAction(event -> setScene("page3"));
+
+        logout_btn.setOnAction(this::navigateToLoginRegister);
+
+        //Initial scene
+        setScene("home");
+    }
+
+    @FXML
     public void UserInfo(ActionEvent event, String user, String password) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(USERINFO_FXML_PATH));
-            Parent root = loader.load();
+            root = loader.load();
             UserDetailsController controller = loader.getController();
             controller.setUserPass(user, password);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -124,7 +125,7 @@ public class MainController {
     public void navigateToLoginRegister(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(LOGIN_REGISTER_FXML_PATH));
-            Parent root = loader.load();
+            root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
