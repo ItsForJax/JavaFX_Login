@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -55,6 +56,7 @@ public class LoginRegisterController {
     @FXML
     private Button login_btn, go_to_register_btn,
                     register_btn, go_to_login_btn;
+
     @FXML
     private boolean isLoginPasswordVisible = false;
     private boolean isRegisterPasswordVisible = false;
