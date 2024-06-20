@@ -248,8 +248,6 @@
 
 }
 
-
-
 /* Style for the TableView headers HOME CSS */
 .table-view .column-header-background {
     -fx-background-color: #86c8ba;
@@ -260,7 +258,6 @@
     -fx-text-fill: #333;
     -fx-alignment: CENTER;
 }
-
 
 
 

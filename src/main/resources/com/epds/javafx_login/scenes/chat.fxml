@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.SVGPath?>
@@ -25,7 +26,35 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" style="-fx-background-color: #f2f2f2;" visible="false" GridPane.columnIndex="1">
+                <GridPane fx:id="placeholder_pane" prefHeight="400.0" prefWidth="400.0" visible="false" GridPane.columnIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="0.0" prefWidth="33.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="373.0" minWidth="10.0" prefWidth="330.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="14.0" prefWidth="34.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="302.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <Label fx:id="empty_chat_placeholder" alignment="CENTER" layoutX="54.0" layoutY="158.0" prefHeight="40.0" prefWidth="238.0" text="Please select a User to chat with" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font name="Trebuchet MS Bold Italic" size="15.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="imageView" fitHeight="102.0" fitWidth="120.0" layoutX="119.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/message_image.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                    </children>
+                </GridPane>
+                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
                     <children>
                         <AnchorPane fx:id="user_details_pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
@@ -52,9 +81,9 @@
                                             </children>
                                         </StackPane>
                                     </graphic>
-                           <font>
-                              <Font size="10.0" />
-                           </font>
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
                                 </Button>
                             </children>
                         </AnchorPane>
@@ -74,20 +103,6 @@
                                 </StackPane>
                             </graphic>
                         </Button>
-                    </children>
-                </AnchorPane>
-                <AnchorPane fx:id="placeholder_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
-                    <children>
-                        <Label fx:id="empty_chat_placeholder" alignment="CENTER" layoutX="81.0" layoutY="198.0" prefHeight="55.0" prefWidth="238.0" text="Please select a User to chat with" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="198.0">
-                            <font>
-                                <Font name="Trebuchet MS Bold Italic" size="15.0" />
-                            </font>
-                        </Label>
-                  <ImageView fitHeight="102.0" fitWidth="120.0" layoutX="146.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="174.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="145.61685943603516" AnchorPane.topAnchor="124.0">
-                     <image>
-                        <Image url="@../images/message_image.png" />
-                     </image>
-                  </ImageView>
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="chat_user_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" styleClass="user_list_pane">
