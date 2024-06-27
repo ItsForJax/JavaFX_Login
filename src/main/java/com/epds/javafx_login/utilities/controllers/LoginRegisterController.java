@@ -5,14 +5,12 @@ import com.epds.javafx_login.utilities.DatabaseHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -222,12 +220,30 @@ public class LoginRegisterController {
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Login Successful");
             alert.setHeaderText(null);
-            alert.setContentText("Welcome!");
+            alert.setContentText(null);
+
+            alert.setGraphic(null);
+            alert.getDialogPane().setPrefSize(300, 230);
+            alert.getButtonTypes().set(0, new ButtonType("OK", ButtonBar.ButtonData.LEFT));
+
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/com/epds/javafx_login/scenes/stylesheet.css").toExternalForm());
+            dialogPane.getStyleClass().add("success-dialog-pane");
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login Failed");
             alert.setHeaderText(null);
             alert.setContentText("Incorrect username or password.");
+
+            alert.setGraphic(null);
+            alert.getDialogPane().setPrefSize(300, 200);
+            alert.getButtonTypes().set(0, new ButtonType("OK", ButtonBar.ButtonData.LEFT));
+
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/com/epds/javafx_login/scenes/stylesheet.css").toExternalForm());
+            dialogPane.getStyleClass().add("incorrect-dialog-pane");
         }
         alert.showAndWait();
         DatabaseHelper.close();
@@ -248,23 +264,59 @@ public class LoginRegisterController {
                     alert.setTitle("Registration Successful");
                     alert.setHeaderText(null);
                     alert.setContentText("User registered successfully.");
+
+                    alert.setGraphic(null);
+                    alert.getDialogPane().setPrefSize(300, 200);
+                    alert.getButtonTypes().set(0, new ButtonType("OK", ButtonBar.ButtonData.LEFT));
+
+                    DialogPane dialogPane = alert.getDialogPane();
+                    dialogPane.getStylesheets().add(
+                            getClass().getResource("/com/epds/javafx_login/scenes/stylesheet.css").toExternalForm());
+                    dialogPane.getStyleClass().add("correct-dialog-pane");
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Registration Failed");
                     alert.setHeaderText(null);
                     alert.setContentText("User " + username + " already exists!");
+
+                    alert.setGraphic(null);
+                    alert.getDialogPane().setPrefSize(300, 200);
+                    alert.getButtonTypes().set(0, new ButtonType("OK", ButtonBar.ButtonData.LEFT));
+
+                    DialogPane dialogPane = alert.getDialogPane();
+                    dialogPane.getStylesheets().add(
+                            getClass().getResource("/com/epds/javafx_login/scenes/stylesheet.css").toExternalForm());
+                    dialogPane.getStyleClass().add("incorrect-dialog-pane");
                 }
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Registration Failed");
                 alert.setHeaderText(null);
                 alert.setContentText("Password doesn't match!");
+
+                alert.setGraphic(null);
+                alert.getDialogPane().setPrefSize(300, 200);
+                alert.getButtonTypes().set(0, new ButtonType("OK", ButtonBar.ButtonData.LEFT));
+
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(
+                        getClass().getResource("/com/epds/javafx_login/scenes/stylesheet.css").toExternalForm());
+                dialogPane.getStyleClass().add("incorrect-dialog-pane");
             }
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Registration Failed");
             alert.setHeaderText(null);
             alert.setContentText("Please fill all items!");
+
+            alert.setGraphic(null);
+            alert.getDialogPane().setPrefSize(300, 200);
+            alert.getButtonTypes().set(0, new ButtonType("OK", ButtonBar.ButtonData.LEFT));
+
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(
+                    getClass().getResource("/com/epds/javafx_login/scenes/stylesheet.css").toExternalForm());
+            dialogPane.getStyleClass().add("incorrect-dialog-pane");
         }
 
         alert.showAndWait();

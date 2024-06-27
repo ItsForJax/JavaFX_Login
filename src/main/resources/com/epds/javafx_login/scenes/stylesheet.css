@@ -260,4 +260,45 @@
 }
 
 
+.alert {
+    -fx-font-size: 14px;
+}
+
+.success-dialog-pane {
+    -fx-background-image: url("../images/welcome.png");
+    -fx-background-size: 190px 190px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center top;
+}
+
+.button-bar .button {
+    -fx-background-color: #0D9276;
+    -fx-text-fill: white;
+}
+
+.incorrect-dialog-pane {
+    -fx-background-image: url("../images/wrong.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center top;
+}
+
+.incorrect-dialog-pane .content {
+    -fx-padding: 130px 0 0 0;
+    -fx-alignment:  center bottom; /* Center align the content */
+}
+
+
+.correct-dialog-pane {
+    -fx-background-image: url("../images/check.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center top;
+}
+
+.correct-dialog-pane .content {
+    -fx-padding: 130px 0 0 0;
+    -fx-alignment:  center bottom; /* Center align the content */
+}
+
 
