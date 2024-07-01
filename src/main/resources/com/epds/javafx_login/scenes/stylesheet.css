@@ -259,7 +259,6 @@
     -fx-alignment: CENTER;
 }
 
-
 .alert {
     -fx-font-size: 14px;
 }
@@ -300,5 +299,3 @@
     -fx-padding: 130px 0 0 0;
     -fx-alignment:  center bottom; /* Center align the content */
 }
-
-
