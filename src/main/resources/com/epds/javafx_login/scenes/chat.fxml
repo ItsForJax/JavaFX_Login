@@ -26,7 +26,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane fx:id="placeholder_pane" prefHeight="400.0" prefWidth="400.0" visible="false" GridPane.columnIndex="1">
+                <GridPane fx:id="placeholder_pane" prefHeight="400.0" prefWidth="400.0"  GridPane.columnIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" minWidth="0.0" prefWidth="33.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="373.0" minWidth="10.0" prefWidth="330.0" />
@@ -54,7 +54,7 @@
                         </Pane>
                     </children>
                 </GridPane>
-                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
+                <AnchorPane fx:id="chat_message_pane" prefHeight="384.0" prefWidth="398.0" visible="false" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
                     <children>
                         <AnchorPane fx:id="user_details_pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>

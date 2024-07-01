@@ -9,51 +9,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #F2F2F2;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epds.javafx_login.utilities.controllers.HomeController">
     <children>
-        <Pane layoutX="17.0" layoutY="56.0" prefHeight="84.0" prefWidth="560.0" style="-fx-background-color: #FFF; -fx-background-radius: 10; -fx-border-width: 15;">
-            <children>
-                <ImageView fitHeight="50.0" fitWidth="47.0" layoutX="31.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/person2.png" />
-                    </image>
-                </ImageView>
-                <Label layoutX="89.0" layoutY="21.0" prefHeight="23.0" prefWidth="89.0" text="Total Scholar" textFill="#8c8c8c" wrapText="true" />
-                <Label layoutX="87.0" layoutY="42.0" text="2,000">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-                <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="206.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/person2.png" />
-                    </image>
-                </ImageView>
-                <Label layoutX="263.0" layoutY="19.0" prefHeight="23.0" prefWidth="95.0" text="Granted Scholar" textFill="#8c8c8c" wrapText="true" />
-                <Label layoutX="264.0" layoutY="42.0" text="2,000">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-                <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="399.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/person2.png" />
-                    </image>
-                </ImageView>
-                <Label layoutX="458.0" layoutY="21.0" prefHeight="23.0" prefWidth="79.0" text="Not Granted" textFill="#8c8c8c" wrapText="true" />
-                <Label layoutX="458.0" layoutY="42.0" text="2,000">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-            </children>
-        </Pane>
-        <Pane layoutX="18.0" layoutY="156.0" prefHeight="327.0" prefWidth="562.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+        <Pane layoutX="20.0" layoutY="178.0" prefHeight="327.0" prefWidth="562.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
             <children>
                 <TableView layoutX="1.0" layoutY="51.0" prefHeight="269.0" prefWidth="560.0" style="-fx-background-color: white;" styleClass="table-view">
                     <columns>
@@ -63,27 +29,84 @@
                         <TableColumn prefWidth="94.0" text="Status" />
                     </columns>
                 </TableView>
-            <ChoiceBox layoutX="469.0" layoutY="12.0" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: null; -fx-border-color: #86c8ba; -fx-border-radius: 3;" />
-            <Label layoutX="481.0" layoutY="17.0" text="Sort by:" />
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="23.0" prefWidth="95.0" text="Scholar List">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
+                <ChoiceBox layoutX="469.0" layoutY="12.0" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: null; -fx-border-color: #86c8ba; -fx-border-radius: 3;" />
+                <Label layoutX="481.0" layoutY="17.0" text="Sort by:" />
+                <Label layoutX="14.0" layoutY="14.0" prefHeight="23.0" prefWidth="95.0" text="Scholar List">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
             </children>
         </Pane>
-        <TextField id="search_field" layoutX="322.0" layoutY="15.0" prefHeight="28.0" prefWidth="204.0" promptText="Search..." />
-        <Button id="search_btn" layoutX="525.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-color: #0D9276;">
+        <TextField id="search_field" layoutX="322.0" layoutY="15.0" prefHeight="28.0" prefWidth="204.0" promptText="Search..." AnchorPane.topAnchor="15.0" />
+        <Button id="search_btn" layoutX="525.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-color: #0D9276;" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="15.0">
             <graphic>
                 <StackPane id="" prefHeight="5.0" prefWidth="0.0">
                     <SVGPath id="svgIcon_search" content="M10.68 11.74a6 6 0 0 1-7.922-8.982a6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7" />
                 </StackPane>
             </graphic>
         </Button>
-        <Label layoutX="27.0" layoutY="10.0" prefHeight="34.0" prefWidth="153.0" text="Welcome to IIMS!">
+        <Label layoutX="27.0" layoutY="10.0" prefHeight="34.0" prefWidth="153.0" text="Welcome to IIMS!" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="10.0">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
+        <GridPane layoutX="20.0" layoutY="68.0" prefHeight="90.0" prefWidth="560.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            </rowConstraints>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                      <ImageView fitHeight="50.0" fitWidth="47.0" layoutX="20.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/person2.png" />
+                          </image>
+                      </ImageView>
+                      <Label layoutX="78.0" layoutY="23.0" prefHeight="23.0" prefWidth="89.0" text="Total Scholar" textFill="#8c8c8c" wrapText="true" />
+                      <Label layoutX="76.0" layoutY="44.0" text="2,000">
+                          <font>
+                              <Font name="System Bold" size="18.0" />
+                          </font>
+                      </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                      <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="18.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/person2.png" />
+                          </image>
+                      </ImageView>
+                      <Label layoutX="75.0" layoutY="21.0" prefHeight="23.0" prefWidth="95.0" text="Granted Scholar" textFill="#8c8c8c" wrapText="true" />
+                      <Label layoutX="76.0" layoutY="44.0" text="2,000">
+                          <font>
+                              <Font name="System Bold" size="18.0" />
+                          </font>
+                      </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                      <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="24.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/person2.png" />
+                          </image>
+                      </ImageView>
+                      <Label layoutX="83.0" layoutY="23.0" prefHeight="23.0" prefWidth="79.0" text="Not Granted" textFill="#8c8c8c" wrapText="true" />
+                      <Label layoutX="83.0" layoutY="44.0" text="2,000">
+                          <font>
+                              <Font name="System Bold" size="18.0" />
+                          </font>
+                      </Label>
+               </children>
+            </Pane>
+         </children>
+        </GridPane>
     </children>
 </AnchorPane>
