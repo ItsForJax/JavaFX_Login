@@ -54,8 +54,8 @@ public class ChatDataService {
         if (!dataFetched) {
             // Async method of getting tickets
             Disposable d = apiClient.getTickets()
-                    .observeOn(Schedulers.single())
                     .subscribeOn(Schedulers.io())
+                    .take(1)
                     .subscribe(
                             response -> {
                                 if (response.isSuccessful()) {
@@ -65,7 +65,7 @@ public class ChatDataService {
                                 }
                             },
                             error -> {
-                                throw new RuntimeException(error);
+                                System.out.println("ERROR: Failed to get the user list from the API");
                             }
                     );
 

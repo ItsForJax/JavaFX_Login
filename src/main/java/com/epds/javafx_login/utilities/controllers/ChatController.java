@@ -158,6 +158,7 @@ public class ChatController {
                                 },
                                 error -> {
                                     // Handle the error
+                                    System.out.println("ERROR: Failed to send a message through the API");
                                 }
                         );
 

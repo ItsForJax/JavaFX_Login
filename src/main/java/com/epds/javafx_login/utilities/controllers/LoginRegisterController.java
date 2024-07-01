@@ -214,6 +214,15 @@ public class LoginRegisterController {
                 preferences.putBoolean("rememberMe", false);
             }
 
+            // Only load the controller if logging in, to prevent server requests before user is logged in
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/epds/javafx_login/scenes/main.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            MainController mainController = loader.getController();
+
             if (!DatabaseHelper.isNewUser(username)) {
                 mainController.MainApplication(event, username);
             } else {
@@ -232,7 +241,6 @@ public class LoginRegisterController {
         alert.showAndWait();
         DatabaseHelper.close();
     }
-
 
     @FXML
     protected void register() {
